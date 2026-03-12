@@ -40,10 +40,10 @@ body {
 }
 
 .text-preset-1 {
-  font-size: 100px;
   line-height: 100%;
   font-weight: 700;
   letter-spacing: 0;
+  font-size: 100px;
 }
 
 .text-preset-2 {

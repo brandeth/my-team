@@ -1,13 +1,22 @@
+import Link from "next/link";
 import { type ComponentPropsWithoutRef } from "react";
 
 type ButtonVariant = "primary" | "secondary";
 
-export type ButtonProps = ComponentPropsWithoutRef<"button"> & {
-  variant?: ButtonVariant;
+type ButtonAsButtonProps = ComponentPropsWithoutRef<"button"> & {
+  href?: undefined;
 };
 
+type ButtonAsLinkProps = Omit<ComponentPropsWithoutRef<typeof Link>, "href"> & {
+  href: string;
+};
+
+export type ButtonProps =
+  | ({ variant?: ButtonVariant } & ButtonAsButtonProps)
+  | ({ variant?: ButtonVariant } & ButtonAsLinkProps);
+
 const baseClasses =
-  "text-preset-7-semibold inline-flex min-h-14 cursor-pointer items-center justify-center rounded-full border px-8 py-3 text-center transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 disabled:cursor-not-allowed disabled:opacity-60";
+  "text-preset-6-semibold inline-flex cursor-pointer items-center justify-center rounded-full border-2 px-[32px] py-[8px] text-center transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-offset-4 disabled:cursor-not-allowed disabled:opacity-60";
 
 const variantClasses: Record<ButtonVariant, string> = {
   primary:
@@ -18,7 +27,6 @@ const variantClasses: Record<ButtonVariant, string> = {
 
 export default function Button({
   className,
-  type,
   variant = "primary",
   ...props
 }: ButtonProps) {
@@ -26,5 +34,13 @@ export default function Button({
     .filter(Boolean)
     .join(" ");
 
-  return <button type={type ?? "button"} className={classes} {...props} />;
+  if ("href" in props && props.href) {
+    return <Link className={classes} {...props} />;
+  }
+
+  const { type, ...buttonProps } = props as ButtonAsButtonProps;
+
+  return (
+    <button type={type ?? "button"} className={classes} {...buttonProps} />
+  );
 }
