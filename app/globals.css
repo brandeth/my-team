@@ -39,63 +39,63 @@ body {
   font-family: var(--font-livvic), Arial, Helvetica, sans-serif;
 }
 
-.text-preset-1 {
+@utility text-preset-1 {
   line-height: 100%;
   font-weight: 700;
   letter-spacing: 0;
   font-size: 100px;
 }
 
-.text-preset-2 {
+@utility text-preset-2 {
   font-size: 64px;
   line-height: 115%;
   font-weight: 700;
   letter-spacing: 0;
 }
 
-.text-preset-3 {
+@utility text-preset-3 {
   font-size: 48px;
   line-height: 100%;
   font-weight: 700;
   letter-spacing: 0;
 }
 
-.text-preset-4 {
+@utility text-preset-4 {
   font-size: 40px;
   line-height: 100%;
   font-weight: 700;
   letter-spacing: 0;
 }
 
-.text-preset-5 {
+@utility text-preset-5 {
   font-size: 32px;
   line-height: 100%;
   font-weight: 700;
   letter-spacing: 0;
 }
 
-.text-preset-6-bold {
+@utility text-preset-6-bold {
   font-size: 18px;
   line-height: 155%;
   font-weight: 700;
   letter-spacing: 0;
 }
 
-.text-preset-6-semibold {
+@utility text-preset-6-semibold {
   font-size: 18px;
   line-height: 155%;
   font-weight: 600;
   letter-spacing: 0;
 }
 
-.text-preset-7-semibold {
+@utility text-preset-7-semibold {
   font-size: 15px;
   line-height: 186%;
   font-weight: 600;
   letter-spacing: 0;
 }
 
-.text-preset-7-medium-italic {
+@utility text-preset-7-medium-italic {
   font-size: 15px;
   line-height: 166%;
   font-style: italic;
@@ -103,10 +103,85 @@ body {
   letter-spacing: 0;
 }
 
-.text-preset-8 {
+@utility text-preset-8 {
   font-size: 13px;
   line-height: 140%;
   font-style: italic;
   font-weight: 500;
   letter-spacing: 0;
+}
+
+@media (min-width: 1025px) {
+  /* Compatibility layer for arbitrary 1025px preset variants. */
+  .min-\[1025px\]\:text-preset-1 {
+    line-height: 100%;
+    font-weight: 700;
+    letter-spacing: 0;
+    font-size: 100px;
+  }
+
+  .min-\[1025px\]\:text-preset-2 {
+    font-size: 64px;
+    line-height: 115%;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .min-\[1025px\]\:text-preset-3 {
+    font-size: 48px;
+    line-height: 100%;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .min-\[1025px\]\:text-preset-4 {
+    font-size: 40px;
+    line-height: 100%;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .min-\[1025px\]\:text-preset-5 {
+    font-size: 32px;
+    line-height: 100%;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .min-\[1025px\]\:text-preset-6-bold {
+    font-size: 18px;
+    line-height: 155%;
+    font-weight: 700;
+    letter-spacing: 0;
+  }
+
+  .min-\[1025px\]\:text-preset-6-semibold {
+    font-size: 18px;
+    line-height: 155%;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .min-\[1025px\]\:text-preset-7-semibold {
+    font-size: 15px;
+    line-height: 186%;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .min-\[1025px\]\:text-preset-7-medium-italic {
+    font-size: 15px;
+    line-height: 166%;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
+
+  .min-\[1025px\]\:text-preset-8 {
+    font-size: 13px;
+    line-height: 140%;
+    font-style: italic;
+    font-weight: 500;
+    letter-spacing: 0;
+  }
 }

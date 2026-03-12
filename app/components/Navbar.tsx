@@ -36,7 +36,7 @@ export default function Navbar({ className }: NavbarProps) {
 
         <nav
           aria-label="Primary"
-          className="min-w-0 justify-self-start md:justify-self-stretch md:px-4 lg:px-0"
+          className="min-w-0 justify-self-start lg:justify-self-stretch md:px-4 lg:px-0"
         >
           <ul className="flex items-center justify-start gap-6 sm:gap-8 md:justify-center md:gap-8 lg:justify-start lg:gap-10">
             {navLinks.map((link) => (
