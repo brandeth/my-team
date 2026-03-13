@@ -60,8 +60,8 @@ export default function Footer({ className }: FooterProps) {
               <Image
                 src="/my-team-logo.svg"
                 alt=""
-                width={111}
-                height={28}
+                width={160}
+                height={40}
                 className="h-auto w-28 sm:w-37 min-[1025px]:w-[225px]"
               />
             </Link>
@@ -106,7 +106,6 @@ export default function Footer({ className }: FooterProps) {
                     aria-hidden="true"
                     width={link.width}
                     height={link.height}
-                    className="h-auto w-auto"
                   />
                 </Link>
               </li>
