@@ -188,7 +188,7 @@ export default function Home() {
 
       <section
         aria-labelledby="home-testimonials-title"
-        className="relative isolate overflow-hidden bg-teal-800 px-6 py-35 sm:px-10 min-[768px]:h-[1199px] min-[768px]:py-25 min-[1025px]:h-[745px] min-[1025px]:px-10 min-[1025px]:py-35 xl:px-32"
+        className="relative isolate overflow-hidden bg-teal-850 px-6 py-35 sm:px-10 min-[768px]:h-[1199px] min-[768px]:py-25 min-[1025px]:h-[745px] min-[1025px]:px-10 min-[1025px]:py-35 xl:px-32"
       >
         <Image
           src="/shapes/shape-04.svg"
@@ -284,7 +284,7 @@ export default function Home() {
           className="min-[768px]:block min-[1025px]:hidden pointer-events-none absolute -bottom-5 left-0 w-48 max-w-none"
         />
 
-        <div className="relative z-10 mx-auto flex max-w-279 flex-col items-center justify-center gap-6 text-center min-[768px]:grid min-[768px]:h-full min-[768px]:grid-cols-[minmax(0,1fr)_auto] min-[768px]:items-center min-[768px]:gap-8 min-[768px]:text-left min-[768px]:px-10">
+        <div className="relative z-10 mx-auto flex max-w-279 flex-col items-center justify-center gap-6 text-center min-[768px]:grid min-[768px]:h-full min-[768px]:grid-cols-[minmax(0,1fr)_auto] min-[768px]:items-center min-[768px]:gap-8 min-[768px]:text-left min-[768px]:px-10 min-[1025px]:px-22">
           <h2
             id="home-cta-title"
             className="text-preset-5 min-[1025px]:text-preset-3 text-teal-900 min-[768px]:max-w-126"
