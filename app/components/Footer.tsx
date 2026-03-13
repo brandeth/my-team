@@ -7,7 +7,7 @@ type FooterProps = {
 
 const navLinks = [
   { href: "/", label: "home" },
-  { href: "#about", label: "about" },
+  { href: "/about", label: "about" },
 ];
 
 const socialLinks = [
@@ -62,7 +62,7 @@ export default function Footer({ className }: FooterProps) {
                 alt=""
                 width={160}
                 height={40}
-                className="h-auto w-28 sm:w-37 min-[1025px]:w-[225px]"
+                className="h-auto w-28 sm:w-37 min-[1025px]:w-56.25"
               />
             </Link>
 
@@ -82,7 +82,7 @@ export default function Footer({ className }: FooterProps) {
             </nav>
           </div>
 
-          <address className="not-italic text-preset-7-medium-italic opacity-60 text-neutral-0 min-[768px]:max-[1025px]:col-start-2 min-[768px]:max-[1025px]:row-start-1 min-[768px]:max-[1025px]:justify-self-end min-[768px]:max-[1025px]:text-right min-[1025px]:pt-1 min-[1025px]:text-left flex flex-col gap-[3px]">
+          <address className="not-italic text-preset-7-medium-italic opacity-60 text-neutral-0 min-[768px]:max-[1025px]:col-start-2 min-[768px]:max-[1025px]:row-start-1 min-[768px]:max-[1025px]:justify-self-end min-[768px]:max-[1025px]:text-right min-[1025px]:pt-1 min-[1025px]:text-left flex flex-col gap-0.75">
             {addressLines.map((line) => (
               <p key={line}>{line}</p>
             ))}

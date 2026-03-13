@@ -1,8 +1,6 @@
 import Image from "next/image";
 
-import Button from "./components/Button";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import ContactCta from "../components/ContactCta";
 
 export default function Home() {
   const featureHighlights = [
@@ -54,11 +52,8 @@ export default function Home() {
     <main className="relative overflow-x-clip text-neutral-0">
       <section
         aria-labelledby="home-hero-title"
-        className="relative isolate bg-teal-800"
+        className="relative isolate bg-teal-800 pt-[8rem] sm:pt-[8.5rem] md:pt-[13rem] lg:pt-[11.625rem] xl:pt-[10.875rem]"
       >
-        <Navbar className="relative z-20 bg-transparent pt-8" />
-
-        {/* pt-10 md:pt-12 min-[1025px]:pt-12 xl:px-41.25 */}
         <div className="flex h-139 justify-center overflow-hidden px-6 pb-24 max-[767px]:h-109.5 max-[767px]:pb-10 sm:px-10 md:pb-36 min-[1024px]:h-128.5 min-[1025px]:h-131.5 min-[1025px]:px-10 min-[1025px]:pb-24 xl:px-32">
           <Image
             src="/shapes/shape-01.svg"
@@ -111,7 +106,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/*  min-[1025px]:h-171 md:py-32 */}
       <section
         id="about"
         aria-labelledby="home-features-title"
@@ -261,48 +255,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section
-        id="contact"
-        aria-labelledby="home-cta-title"
-        className="relative isolate overflow-hidden bg-rose-500 px-6 py-20 sm:px-10 min-[768px]:h-50 min-[1025px]:px-10 xl:px-32"
-      >
-        <Image
-          src="/shapes/shape-06.svg"
-          alt=""
-          aria-hidden="true"
-          width={200}
-          height={144}
-          className="hidden min-[1025px]:block pointer-events-none absolute bottom-0 left-0 w-50 max-w-none"
-        />
-
-        <Image
-          src="/shapes/shape-06.svg"
-          alt=""
-          aria-hidden="true"
-          width={200}
-          height={144}
-          className="min-[768px]:block min-[1025px]:hidden pointer-events-none absolute -bottom-5 left-0 w-48 max-w-none"
-        />
-
-        <div className="relative z-10 mx-auto flex max-w-279 flex-col items-center justify-center gap-6 text-center min-[768px]:grid min-[768px]:h-full min-[768px]:grid-cols-[minmax(0,1fr)_auto] min-[768px]:items-center min-[768px]:gap-8 min-[768px]:text-left min-[768px]:px-10 min-[1025px]:px-22">
-          <h2
-            id="home-cta-title"
-            className="text-preset-5 min-[1025px]:text-preset-3 text-teal-900 min-[768px]:max-w-126"
-          >
-            Ready to get started?
-          </h2>
-
-          <Button
-            href="#contact"
-            variant="secondary"
-            className="lowercase whitespace-nowrap"
-          >
-            <span>contact us</span>
-          </Button>
-        </div>
-      </section>
-
-      <Footer />
+      <ContactCta />
     </main>
   );
 }

@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { type ComponentProps } from "react";
 
-import AboutCard from "../components/AboutCard";
-import Navbar from "../components/Navbar";
+import AboutCard from "../../components/AboutCard";
+import ContactCta from "../../components/ContactCta";
 
 export default function AboutPage() {
   const directors: Array<ComponentProps<typeof AboutCard>> = [
@@ -59,14 +59,45 @@ export default function AboutPage() {
     },
   ];
 
+  const clients = [
+    {
+      name: "The Verge",
+      image: "/images/the-verge.png",
+      width: 165,
+      height: 28,
+    },
+    {
+      name: "The Jakarta Post",
+      image: "/images/the-jakarta-post.png",
+      width: 184,
+      height: 23,
+    },
+    {
+      name: "The Guardian",
+      image: "/images/the-guardian.png",
+      width: 180,
+      height: 28,
+    },
+    {
+      name: "TechRadar",
+      image: "/images/techradar.png",
+      width: 165,
+      height: 28,
+    },
+    {
+      name: "Gadgets Now",
+      image: "/images/gadgets-now.png",
+      width: 98,
+      height: 45,
+    },
+  ];
+
   return (
     <main className="relative overflow-x-clip bg-teal-800 text-neutral-0">
       <section
         aria-labelledby="about-hero-title"
-        className="relative isolate min-h-screen overflow-hidden min-[1025px]:min-h-0 min-[1025px]:max-h-[517px]"
+        className="relative isolate min-h-screen overflow-hidden pt-32 sm:pt-34 md:pt-52 min-[1025px]:min-h-0 min-[1025px]:max-h-129.25 lg:pt-46.5 xl:pt-43.5"
       >
-        <Navbar className="relative z-20 bg-transparent pt-8" />
-
         <Image
           src="/shapes/shape-07.svg"
           alt=""
@@ -77,7 +108,7 @@ export default function AboutPage() {
           priority
         />
 
-        <div className="relative z-10 mx-auto flex w-full max-w-277.5 px-6 pb-28 pt-10 sm:px-10 md:pb-36 md:pt-12 lg:px-20 lg:pb-30 lg:pt-16 xl:px-0">
+        <div className="relative z-10 mx-auto flex w-full max-w-277.5 px-6 pb-28 pt-10 sm:px-10 md:pb-36 md:pt-12 lg:px-20 lg:pb-30 xl:px-0">
           <div className="grid w-full gap-12 text-center md:gap-14 lg:grid-cols-[minmax(0,16rem)_minmax(0,45.625rem)] lg:items-start lg:justify-between lg:gap-20 lg:text-left">
             <div className="flex justify-center mt-4 lg:justify-start">
               <h1
@@ -108,7 +139,7 @@ export default function AboutPage() {
 
       <section
         aria-labelledby="about-directors-title"
-        className="relative isolate overflow-hidden bg-teal-850 px-6 py-22 sm:px-10 md:py-25 min-[1025px]:max-h-[1002px] lg:px-20 lg:py-35 xl:px-0"
+        className="relative isolate overflow-hidden bg-teal-850 px-6 py-22 sm:px-10 md:py-25 min-[1025px]:max-h-250.5 lg:px-20 lg:py-35 xl:px-0"
       >
         <Image
           src="/shapes/shape-08.svg"
@@ -151,6 +182,47 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      <section
+        aria-labelledby="about-clients-title"
+        className="relative isolate overflow-hidden bg-teal-900 px-6 py-22 sm:px-10 md:py-25 min-[1025px]:max-h-109.25 lg:px-20 lg:py-35 xl:px-0"
+      >
+        <Image
+          src="/shapes/shape-10.svg"
+          alt=""
+          aria-hidden="true"
+          width={200}
+          height={200}
+          className="pointer-events-none absolute left-0 top-0 z-0 max-w-none"
+        />
+
+        <div className="relative z-10 mx-auto flex w-full max-w-290 flex-col items-center gap-12 md:gap-12 min-[1025px]:h-full min-[1025px]:justify-center">
+          <h2
+            id="about-clients-title"
+            className="text-center text-preset-5 md:text-preset-3"
+          >
+            Some of our clients
+          </h2>
+
+          <div className="grid w-full grid-cols-2 items-center justify-items-center gap-x-8 gap-y-12 sm:grid-cols-5 md:gap-x-10 md:gap-y-14 min-[1025px]:grid-cols-5 min-[1025px]:gap-x-12 min-[1025px]:gap-y-8">
+            {clients.map((client) => (
+              <div
+                key={client.name}
+                className="flex min-h-18 w-full items-center justify-center"
+              >
+                <Image
+                  src={client.image}
+                  alt={client.name}
+                  width={client.width}
+                  height={client.height}
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ContactCta />
     </main>
   );
 }
