@@ -185,7 +185,7 @@ export default function Home() {
 
       <section
         aria-labelledby="home-testimonials-title"
-        className="relative isolate h-[745px] overflow-hidden bg-teal-800 px-6 py-35 sm:px-10 min-[768px]:h-[1199px] min-[768px]:py-25 min-[1025px]:h-[745px] min-[1025px]:px-10 min-[1025px]:py-35 xl:px-32"
+        className="relative isolate overflow-hidden bg-teal-800 px-6 py-35 sm:px-10 min-[768px]:h-[1199px] min-[768px]:py-25 min-[1025px]:h-[745px] min-[1025px]:px-10 min-[1025px]:py-35 xl:px-32"
       >
         <Image
           src="/shapes/shape-04.svg"
@@ -208,7 +208,7 @@ export default function Home() {
         <div className="relative z-10 mx-auto flex max-w-279 flex-col items-center gap-12 min-[768px]:gap-16">
           <h2
             id="home-testimonials-title"
-            className="max-w-44 text-center text-preset-3 text-neutral-0 min-[768px]:max-w-235 min-[768px]:text-preset-5 min-[1025px]:text-preset-3"
+            className="max-w-none min-[768px]:max-w-44 text-center text-preset-5 text-neutral-0 min-[768px]:max-w-120 min-[768px]:text-preset-5 min-[1025px]:text-preset-3 min-[1025px]:max-w-230"
           >
             Delivering real results for top companies. Some of our{" "}
             <span className="text-cyan-100">success stories.</span>
@@ -230,8 +230,8 @@ export default function Home() {
                 />
 
                 <div className="relative z-10 flex flex-col items-center gap-4">
-                  <p className="text-preset-7-semibold text-neutral-0">
-                    {testimonial.quote}
+                  <p className="text-preset-7-semibold text-neutral-0 min-[768px]:max-w-150 min-[1025px]:max-w-none">
+                    &quot;{testimonial.quote}&quot;
                   </p>
 
                   <div className="flex flex-col items-center gap-0.5">
