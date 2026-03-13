@@ -24,6 +24,30 @@ export default function Home() {
     },
   ];
 
+  const testimonials = [
+    {
+      quote:
+        "The team perfectly fit the specialized skill set required. They focused on the most essential features helping us launch the platform eight months faster than planned.",
+      name: "Kady Baker",
+      role: "Product Manager at Bookmark",
+      image: "/images/kady-baker.png",
+    },
+    {
+      quote:
+        "We needed to automate our entire onboarding process. The team came in and built out the whole journey. Since going live, user retention has gone through the roof!",
+      name: "Aiysha Reese",
+      role: "Founder of Manage",
+      image: "/images/aiysha-reese.png",
+    },
+    {
+      quote:
+        "Amazing. Our team helped us build an app that delivered a new experience for hiring a physio. The launch was an instant success with 100k downloads in the first month.",
+      name: "Arthur Clarke",
+      role: "Co-founder of MyPhysio",
+      image: "/images/arthur-clarke.png",
+    },
+  ];
+
   return (
     <main className="relative overflow-x-clip text-neutral-0">
       <section
@@ -155,6 +179,81 @@ export default function Home() {
                 </article>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        aria-labelledby="home-testimonials-title"
+        className="relative isolate h-[745px] overflow-hidden bg-teal-800 px-6 py-35 sm:px-10 min-[768px]:h-[1199px] min-[768px]:py-25 min-[1025px]:h-[745px] min-[1025px]:px-10 min-[1025px]:py-35 xl:px-32"
+      >
+        <Image
+          src="/shapes/shape-04.svg"
+          alt=""
+          aria-hidden="true"
+          width={147}
+          height={100}
+          className="pointer-events-none absolute left-0 top-0 w-36.75 max-w-none"
+        />
+
+        <Image
+          src="/shapes/shape-05.svg"
+          alt=""
+          aria-hidden="true"
+          width={200}
+          height={100}
+          className="pointer-events-none absolute bottom-0 right-0 w-50 max-w-none"
+        />
+
+        <div className="relative z-10 mx-auto flex max-w-279 flex-col items-center gap-12 min-[768px]:gap-16">
+          <h2
+            id="home-testimonials-title"
+            className="max-w-44 text-center text-preset-3 text-neutral-0 min-[768px]:max-w-235 min-[768px]:text-preset-5 min-[1025px]:text-preset-3"
+          >
+            Delivering real results for top companies. Some of our{" "}
+            <span className="text-cyan-100">success stories.</span>
+          </h2>
+
+          <div className="grid w-full gap-16 min-[768px]:gap-12 min-[1025px]:grid-cols-3 min-[1025px]:items-start min-[1025px]:gap-7.5">
+            {testimonials.map((testimonial) => (
+              <article
+                key={testimonial.name}
+                className="flex flex-col items-center text-center"
+              >
+                <Image
+                  src="/quotation-mark.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width={67}
+                  height={56}
+                  className="pointer-events-none -mb-5 h-14 w-16.75"
+                />
+
+                <div className="relative z-10 flex flex-col items-center gap-4">
+                  <p className="text-preset-7-semibold text-neutral-0">
+                    {testimonial.quote}
+                  </p>
+
+                  <div className="flex flex-col items-center gap-0.5">
+                    <p className="text-preset-6-bold text-cyan-100">
+                      {testimonial.name}
+                    </p>
+
+                    <p className="text-preset-8 text-neutral-0">
+                      {testimonial.role}
+                    </p>
+                  </div>
+
+                  <Image
+                    src={testimonial.image}
+                    alt={testimonial.name}
+                    width={96}
+                    height={96}
+                    className="mt-4 h-15 w-15 rounded-full object-cover"
+                  />
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
