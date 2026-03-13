@@ -50,7 +50,7 @@ export default function Home() {
             aria-hidden="true"
             width={358}
             height={100}
-            className="pointer-events-none absolute bottom-0 left-1/2 w-89.5 max-w-none -translate-x-1/2 max-[767px]:bottom-0 max-[767px]:w-104 min-[1025px]:left-auto min-[1025px]:right-10 min-[1025px]:translate-x-0 xl:right-41.25"
+            className="pointer-events-none absolute bottom-0 left-1/2 w-89.5 max-w-none -translate-x-1/2 max-[767px]:bottom-0 max-[767px]:w-88 min-[1025px]:left-auto min-[1025px]:right-10 min-[1025px]:translate-x-0 xl:right-41.25"
             priority
           />
 
@@ -88,38 +88,44 @@ export default function Home() {
       {/*  min-[1025px]:h-171 md:py-32 */}
       <section
         aria-labelledby="home-features-title"
-        className="min-[1025px] min-[1025px]:h-171 relative isolate overflow-hidden bg-teal-900 px-6 py-16 sm:px-10 min-[1025px]:px-10 min-[1025px]:py-0 xl:px-32 flex flex-col justify-center"
+        className="min-[1025px] min-[1025px]:h-171 relative isolate overflow-hidden bg-teal-900 px-6 py-16 sm:px-10 min-[768px]:py-24 min-[1025px]:px-10 min-[1025px]:pt-36 xl:px-32 flex flex-col justify-center"
       >
         <Image
           src="/shapes/shape-03.svg"
-          alt=""
+          alt="Shape 03"
           aria-hidden="true"
           width={100}
           height={244}
-          className="pointer-events-none absolute right-0 bottom-0 w-25 max-w-none"
+          className="pointer-events-none absolute right-0 top-0 w-25 max-w-none min-[1025px]:hidden"
         />
 
-        <div className="flex flex-col px-12">
-          <div
-            aria-hidden="true"
-            className="h-1 w-12.5 bg-rose-500 max-[1024px]:mx-auto"
-          />
+        <Image
+          src="/shapes/shape-03.svg"
+          alt="Shape 03"
+          aria-hidden="true"
+          width={100}
+          height={244}
+          className="pointer-events-none absolute right-0 bottom-0 hidden w-25 max-w-none min-[1025px]:block"
+        />
 
-          <div className="relative z-10 grid gap-14 min-[1025px]:h-full min-[1025px]:grid-cols-[minmax(0,27.8125rem)_minmax(0,40.75rem)] min-[1025px]:items-start min-[1025px]:justify-between min-[1025px]:gap-28 ">
-            <div className="max-[1024px]:mx-auto max-[1024px]:text-center min-[1025px]:self-start ">
+        <div className="flex flex-col min-[768px]:px-10">
+          <div aria-hidden="true" className="h-1 w-12.5 bg-rose-500" />
+
+          <div className="relative z-10 grid gap-14 min-[768px]:gap-16 min-[1025px]:h-full min-[1025px]:grid-cols-[minmax(0,27.8125rem)_minmax(0,40.75rem)] min-[1025px]:items-start min-[1025px]:justify-between min-[1025px]:gap-28 ">
+            <div className="min-[1025px]:self-start ">
               <h2
                 id="home-features-title"
-                className="text-preset-4 min-[1025px]:text-preset-3 mt-16"
+                className="mt-8 text-preset-5 min-[768px]:mt-16 min-[768px]:text-left min-[1025px]:text-preset-3 max-[767px]:max-w-58 min-[768px]:max-w-125 min-[1024px]:max-w-none"
               >
                 Build &amp; manage distributed teams like no one else.
               </h2>
             </div>
 
-            <div className="grid gap-12 min-[1025px]:self-center min-[1025px]:content-center min-[1025px]:gap-6 min-[1025px]:py-10 min-[1025px]:pt-16">
+            <div className="grid gap-12  min-[768px]:gap-8 min-[768px]:pb-10 min-[1025px]:self-center min-[1025px]:content-center min-[1025px]:gap-6 min-[1025px]:py-10 min-[1025px]:pt-16">
               {featureHighlights.map((feature) => (
                 <article
                   key={feature.title}
-                  className="grid gap-4 max-[1024px]:justify-items-center max-[1024px]:text-center min-[1025px]:grid-cols-[5rem_minmax(0,1fr)] min-[1025px]:items-start min-[1025px]:gap-4"
+                  className="grid gap-4 max-[767px]:justify-items-center max-[767px]:text-center min-[768px]:grid-cols-[5rem_minmax(0,1fr)] min-[768px]:items-start min-[768px]:gap-5 min-[1025px]:gap-4"
                 >
                   <div className="relative h-18 w-18 shrink-0">
                     <span
@@ -137,7 +143,7 @@ export default function Home() {
                     />
                   </div>
 
-                  <div className="grid gap-2 min-[1025px]:pt-2">
+                  <div className="grid gap-2 min-[768px]:pt-2">
                     <h3 className="text-preset-6-bold text-rose-500">
                       {feature.title}
                     </h3>
