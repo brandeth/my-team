@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import Button from "./components/Button";
+import Footer from "./components/Footer";
 import Navbar from "./components/Navbar";
 
 export default function Home() {
@@ -111,6 +113,7 @@ export default function Home() {
 
       {/*  min-[1025px]:h-171 md:py-32 */}
       <section
+        id="about"
         aria-labelledby="home-features-title"
         className="min-[1025px] min-[1025px]:h-171 relative isolate overflow-hidden bg-teal-900 px-6 py-16 sm:px-10 min-[768px]:py-24 min-[1025px]:px-10 min-[1025px]:pt-36 xl:px-32 flex flex-col justify-center"
       >
@@ -172,7 +175,7 @@ export default function Home() {
                       {feature.title}
                     </h3>
 
-                    <p className="text-preset-7-semibold text-neutral-0">
+                    <p className="text-preset-7-semibold opacity-80 text-neutral-0">
                       {feature.description}
                     </p>
                   </div>
@@ -257,6 +260,49 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section
+        id="contact"
+        aria-labelledby="home-cta-title"
+        className="relative isolate overflow-hidden bg-rose-500 px-6 py-20 sm:px-10 min-[768px]:h-50 min-[1025px]:px-10 xl:px-32"
+      >
+        <Image
+          src="/shapes/shape-06.svg"
+          alt=""
+          aria-hidden="true"
+          width={200}
+          height={144}
+          className="hidden min-[1025px]:block pointer-events-none absolute bottom-0 left-0 w-50 max-w-none"
+        />
+
+        <Image
+          src="/shapes/shape-06.svg"
+          alt=""
+          aria-hidden="true"
+          width={200}
+          height={144}
+          className="min-[768px]:block min-[1025px]:hidden pointer-events-none absolute -bottom-5 left-0 w-48 max-w-none"
+        />
+
+        <div className="relative z-10 mx-auto flex max-w-279 flex-col items-center justify-center gap-6 text-center min-[768px]:grid min-[768px]:h-full min-[768px]:grid-cols-[minmax(0,1fr)_auto] min-[768px]:items-center min-[768px]:gap-8 min-[768px]:text-left min-[768px]:px-10">
+          <h2
+            id="home-cta-title"
+            className="text-preset-5 min-[1025px]:text-preset-3 text-teal-900 min-[768px]:max-w-126"
+          >
+            Ready to get started?
+          </h2>
+
+          <Button
+            href="#contact"
+            variant="secondary"
+            className="lowercase whitespace-nowrap"
+          >
+            <span>contact us</span>
+          </Button>
+        </div>
+      </section>
+
+      <Footer />
     </main>
   );
 }

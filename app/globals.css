@@ -88,6 +88,13 @@ body {
   letter-spacing: 0;
 }
 
+@utility text-preset-7 {
+  font-size: 15px;
+  line-height: 186%;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
 @utility text-preset-7-semibold {
   font-size: 15px;
   line-height: 186%;
@@ -158,6 +165,13 @@ body {
   .min-\[1025px\]\:text-preset-6-semibold {
     font-size: 18px;
     line-height: 155%;
+    font-weight: 600;
+    letter-spacing: 0;
+  }
+
+  .min-\[1025px\]\:text-preset-7 {
+    font-size: 15px;
+    line-height: 186%;
     font-weight: 600;
     letter-spacing: 0;
   }
