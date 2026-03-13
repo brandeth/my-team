@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Button from "./Button";
 
@@ -9,13 +10,15 @@ type NavbarProps = {
   className?: string;
 };
 
-const navLinks = [
-  { href: "/", label: "home" },
-  { href: "#about", label: "about" },
-];
-
 export default function Navbar({ className }: NavbarProps) {
+  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const isHomePage = pathname === "/";
+  const navLinks = [
+    { href: "/", label: "home" },
+    { href: "/about", label: "about" },
+  ];
+  const contactHref = isHomePage ? "#contact" : "/#contact";
   const classes = ["text-neutral-0 lg:pt-8 xl:pt-5", className]
     .filter(Boolean)
     .join(" ");
@@ -96,7 +99,7 @@ export default function Navbar({ className }: NavbarProps) {
 
           <div className="hidden justify-self-start md:block md:justify-self-end md:shrink-0">
             <Button
-              href="#contact"
+              href={contactHref}
               className="lowercase whitespace-nowrap md:px-7 lg:px-8"
             >
               <span>contact us</span>
@@ -126,7 +129,7 @@ export default function Navbar({ className }: NavbarProps) {
 
             <div className="mt-6 border-t border-teal-900/12 pt-6">
               <Button
-                href="#contact"
+                href={contactHref}
                 variant="secondary"
                 className="w-full lowercase"
                 onClick={() => setIsMobileMenuOpen(false)}

@@ -49,7 +49,7 @@ export default function Footer({ className }: FooterProps) {
 
   return (
     <footer className={classes}>
-      <div className="mx-auto grid w-full gap-10 px-6 py-16 text-center sm:px-10 min-[768px]:max-[1025px]:min-h-64 min-[768px]:max-[1025px]:grid-cols-2 min-[768px]:max-[1025px]:grid-rows-[auto_1fr_auto] min-[768px]:max-[1025px]:gap-x-10 min-[768px]:max-[1025px]:gap-y-4 min-[768px]:max-[1025px]:px-10 min-[768px]:max-[1025px]:py-14 min-[1025px]:grid-cols-[minmax(0,1fr)_auto] min-[1025px]:items-start min-[1025px]:gap-10 min-[1025px]:px-10 xl:max-w-277.5 xl:px-0 xl:py-11">
+      <div className="mx-auto grid w-full gap-10 px-6 py-12 text-center sm:px-10 min-[768px]:max-[1025px]:min-h-64 min-[768px]:max-[1025px]:grid-cols-2 min-[768px]:max-[1025px]:grid-rows-[auto_1fr_auto] min-[768px]:max-[1025px]:gap-x-10 min-[768px]:max-[1025px]:gap-y-4 min-[768px]:max-[1025px]:px-10 min-[768px]:max-[1025px]:py-14 min-[1025px]:grid-cols-[minmax(0,1fr)_auto] min-[1025px]:items-start min-[1025px]:gap-10 min-[1025px]:px-10 xl:max-w-277.5 xl:px-0 xl:py-11">
         <div className="grid gap-10 min-[768px]:max-[1025px]:contents min-[1025px]:grid-cols-[auto_auto] min-[1025px]:items-start min-[1025px]:justify-start min-[1025px]:gap-8 min-[1025px]:text-left xl:gap-30">
           <div className="flex h-full flex-col items-center min-[1025px]:justify-center justify-between gap-7 min-[768px]:max-[1024px]:col-start-1 min-[768px]:max-[1024px]:row-start-1 min-[768px]:max-[1024px]:h-auto min-[768px]:max-[1025px]:items-start min-[768px]:max-[1024px]:justify-between min-[768px]:max-[1024px]:text-left min-[1025px]:items-start min-[1025px]:text-left">
             <Link
