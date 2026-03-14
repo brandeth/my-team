@@ -22,7 +22,7 @@ export default function ContactPage() {
     <main className="relative overflow-x-clip bg-teal-800 text-neutral-0">
       <section
         aria-labelledby="contact-page-title"
-        className="relative isolate overflow-hidden pb-22 pt-32 sm:pb-24 sm:pt-34 md:pb-28 md:pt-52 lg:pb-35 lg:pt-46.5 min-[1025px]:max-h-197.25 min-[1025px]:pb-24 min-[1025px]:pt-40"
+        className="relative isolate overflow-hidden pb-22 pt-32 sm:pb-24 sm:pt-34 md:pb-28 md:pt-52 min-[768px]:max-[1024px]:h-301 min-[768px]:max-[1024px]:pb-30 min-[1025px]:max-h-197.25 min-[1025px]:pb-24 min-[1025px]:pt-40"
       >
         <Image
           src="/shapes/shape-11.svg"
@@ -30,7 +30,7 @@ export default function ContactPage() {
           aria-hidden="true"
           width={100}
           height={200}
-          className="pointer-events-none absolute -left-16 top-18 z-0 w-25 max-w-none sm:-left-10 sm:top-20 md:-left-6 md:top-24 lg:-left-8 lg:top-54 xl:left-0"
+          className="pointer-events-none absolute -left-16 top-18 z-0 w-25 min-[768px]:max-[1024px]:w-27 max-w-none sm:-left-10 sm:top-20 md:left-0 md:top-50 min-[768px]:max-[1024px]:-left-18 min-[768px]:max-[1024px]:top-46 min-[1025px]:-left-8 min-[1025px]:top-61 xl:left-0"
           priority
         />
 
@@ -40,25 +40,25 @@ export default function ContactPage() {
           aria-hidden="true"
           width={224}
           height={200}
-          className="pointer-events-none absolute bottom-0 right-0 z-0 max-w-none sm:bottom-0 sm:right-0 lg:bottom-0 xl:w-[224.49px] xl:h-50 lg:right-0 xl:-right-16"
+          className="pointer-events-none absolute bottom-0 right-0 z-0 h-57 max-w-none sm:bottom-0 sm:-right-20 sm:w-64 min-[768px]:max-[1024px]:-bottom-0.5 min-[768px]:max-[1024px]:right-0 min-[1025px]:bottom-0 min-[1025px]:right-0 xl:h-56 xl:w-[224.49px] xl:-right-16"
           priority
         />
 
-        <div className="relative z-10 mx-auto w-full px-6 sm:px-10 lg:px-20 xl:max-w-277.5 xl:px-0">
-          <div className="grid w-full gap-14 md:gap-16 lg:grid-cols-[minmax(0,28rem)_minmax(0,33.75rem)] lg:items-start lg:justify-between lg:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,33.75rem)] xl:gap-18">
-            <div className="flex flex-col items-start text-left lg:pt-8">
+        <div className="relative z-10 mx-auto w-full px-6 sm:px-10 min-[768px]:max-[1024px]:h-full min-[768px]:max-[1024px]:max-w-143 min-[1025px]:px-20 xl:max-w-277.5 xl:px-0">
+          <div className="grid w-full gap-14 md:gap-16 min-[768px]:max-[1024px]:content-start min-[768px]:max-[1024px]:justify-items-center min-[768px]:max-[1024px]:gap-16 min-[1025px]:grid-cols-[minmax(0,28rem)_minmax(0,33.75rem)] min-[1025px]:items-start min-[1025px]:justify-between min-[1025px]:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,33.75rem)] xl:gap-18">
+            <div className="flex flex-col items-start text-left min-[768px]:max-[1025px]:mx-auto min-[768px]:max-[1025px]:w-full min-[768px]:max-[1025px]:max-w-120 min-[768px]:max-[1025px]:items-center min-[1025px]:pt-8">
               <h1
                 id="contact-page-title"
-                className="text-preset-4 sm:text-[4rem] sm:leading-none lg:text-preset-2"
+                className="text-preset-4 sm:text-[4rem] sm:leading-none min-[768px]:max-[1024px]:text-center min-[1025px]:text-preset-2"
               >
                 Contact
               </h1>
 
-              <p className="mt-4 text-preset-5 text-rose-500 md:text-preset-5">
+              <p className="mt-4 xl:mt-8 text-preset-5 text-rose-500 min-[768px]:max-[1024px]:text-center md:text-preset-5">
                 Ask us about
               </p>
 
-              <div className="mt-10 grid w-full gap-5 sm:mt-12">
+              <div className="mt-10 grid w-full gap-2 sm:mt-10 min-[768px]:max-[1024px]:max-w-200 min-[768px]:max-[1024px]:gap-3">
                 {contactTopics.map((topic) => (
                   <article
                     key={topic.label}
@@ -88,7 +88,7 @@ export default function ContactPage() {
               </div>
             </div>
 
-            <div className="w-full lg:max-w-135 lg:justify-self-end lg:pt-2 xl:pt-6">
+            <div className="w-full min-[768px]:max-[1025px]:mx-auto min-[768px]:max-[1025px]:max-w-125 min-[768px]:max-[1025px]:pt-1 min-[1025px]:max-w-135 min-[1025px]:justify-self-end min-[1025px]:pt-2 xl:pt-8">
               <ContactForm className="max-w-none bg-transparent px-0 py-0 sm:px-0 sm:py-0" />
             </div>
           </div>

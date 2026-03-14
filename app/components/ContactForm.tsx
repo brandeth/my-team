@@ -8,6 +8,8 @@ import {
   useState,
 } from "react";
 
+import Button from "./Button";
+
 type ContactFormValues = {
   name: string;
   email: string;
@@ -33,6 +35,8 @@ const initialValues: ContactFormValues = {
   message: "",
 };
 
+const MESSAGE_MAX_LENGTH = 135;
+
 const fieldOrder: Array<{
   name: ContactFormFieldName;
   label: string;
@@ -55,7 +59,7 @@ const fieldOrder: Array<{
     name: "message",
     label: "Message",
     autoComplete: "off",
-    rows: 3,
+    rows: 2,
   },
 ];
 
@@ -112,6 +116,8 @@ export default function ContactForm({ className, onSubmit }: ContactFormProps) {
   ) {
     const { name, value } = event.currentTarget;
     const fieldName = name as ContactFormFieldName;
+    const nextValue =
+      fieldName === "message" ? value.slice(0, MESSAGE_MAX_LENGTH) : value;
 
     if (submitMessage) {
       setSubmitMessage(null);
@@ -119,7 +125,7 @@ export default function ContactForm({ className, onSubmit }: ContactFormProps) {
 
     setValues((currentValues) => ({
       ...currentValues,
-      [fieldName]: value,
+      [fieldName]: nextValue,
     }));
   }
 
@@ -181,6 +187,7 @@ export default function ContactForm({ className, onSubmit }: ContactFormProps) {
           const isFocused = focusedField === field.name;
           const wrapperClasses = [
             "border-b pb-3 transition-colors duration-200 sm:pb-3",
+            field.name === "message" ? "sm:pb-6" : null,
             showError
               ? "border-rose-500"
               : isFocused
@@ -190,7 +197,7 @@ export default function ContactForm({ className, onSubmit }: ContactFormProps) {
             .filter(Boolean)
             .join(" ");
           const controlClasses = [
-            "text-preset-7-semibold w-full resize-none border-0 bg-transparent p-0 outline-none transition-opacity duration-200 placeholder:text-current px-3",
+            "text-preset-7-semibold w-full resize-none border-0 bg-transparent p-0 outline-none transition-opacity duration-200 placeholder:text-current px-4",
             showError
               ? "text-rose-500 opacity-100 caret-rose-500"
               : [
@@ -207,6 +214,7 @@ export default function ContactForm({ className, onSubmit }: ContactFormProps) {
                     id={fieldId}
                     name={field.name}
                     rows={field.rows}
+                    maxLength={MESSAGE_MAX_LENGTH}
                     value={value}
                     autoComplete={field.autoComplete}
                     aria-label={field.label}
@@ -247,14 +255,14 @@ export default function ContactForm({ className, onSubmit }: ContactFormProps) {
         })}
       </div>
 
-      <div className="mt-8 flex justify-start min-[1025px]:mt-6">
-        <button
+      <div className="mt-8 flex justify-start min-[1025px]:mt-8">
+        <Button
           type="submit"
           disabled={isSubmitting}
-          className="text-preset-6-semibold cursor-pointer rounded-full border-2 border-cyan-100 bg-transparent px-8 py-2 text-neutral-0 lowercase transition-colors duration-200 hover:bg-cyan-100 hover:text-teal-900 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-100"
+          className="lowercase disabled:opacity-100"
         >
           {isSubmitting ? "submitting..." : "submit"}
-        </button>
+        </Button>
       </div>
 
       {submitMessage ? (
