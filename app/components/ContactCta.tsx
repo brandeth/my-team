@@ -30,7 +30,7 @@ export default function ContactCta() {
       <div className="relative z-10 mx-auto flex max-w-279 flex-col items-center justify-center gap-6 text-center min-[768px]:grid min-[768px]:h-full min-[768px]:grid-cols-[minmax(0,1fr)_auto] min-[768px]:items-center min-[768px]:gap-8 min-[768px]:text-left min-[768px]:px-10 min-[1025px]:px-22">
         <h2
           id="contact-cta-title"
-          className="text-preset-5 min-[1025px]:text-preset-3 text-teal-900 min-[768px]:max-w-126"
+          className="text-preset-5 min-[1025px]:text-preset-3 text-teal-900 min-[768px]:max-w-none"
         >
           Ready to get started?
         </h2>
