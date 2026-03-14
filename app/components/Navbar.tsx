@@ -148,7 +148,7 @@ export default function Navbar({ className }: NavbarProps) {
 
   return (
     <header className={classes}>
-      <div className="relative mx-auto w-full px-6 py-5 sm:px-10 sm:py-6 md:grid md:min-h-28 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-center md:gap-x-6 md:gap-y-0 md:px-10 md:py-8 lg:min-h-38.5 lg:gap-18 lg:px-20 lg:py-0 xl:max-w-277.5 xl:grid-cols-[auto_1fr_auto] xl:gap-20 xl:px-0">
+      <div className="relative mx-auto w-full px-6 min-[1025px]:max-[1279px]:px-0 py-5 sm:px-10 sm:py-6 md:grid md:min-h-28 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-center md:gap-x-6 md:gap-y-0 md:px-10 md:py-8 lg:min-h-38.5 lg:gap-18 min-[1025px]:px-20 lg:py-0 xl:max-w-277.5 xl:grid-cols-[auto_1fr_auto] xl:gap-20 xl:px-0">
         <div className="relative z-50 flex min-h-14 items-center justify-between md:contents">
           <Link
             href="/"

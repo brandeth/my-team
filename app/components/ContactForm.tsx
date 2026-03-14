@@ -35,7 +35,7 @@ const initialValues: ContactFormValues = {
   message: "",
 };
 
-const MESSAGE_MAX_LENGTH = 135;
+const MESSAGE_MAX_LENGTH = 165;
 
 const fieldOrder: Array<{
   name: ContactFormFieldName;

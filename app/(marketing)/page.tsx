@@ -54,14 +54,14 @@ export default function Home() {
         aria-labelledby="home-hero-title"
         className="relative isolate bg-teal-800 pt-[8rem] sm:pt-[8.5rem] md:pt-[13rem] lg:pt-[11.625rem] xl:pt-[10.875rem]"
       >
-        <div className="flex h-139 justify-center overflow-hidden px-6 pb-24 max-[767px]:h-109.5 max-[767px]:pb-10 sm:px-10 md:pb-36 min-[1024px]:h-128.5 min-[1025px]:h-131.5 min-[1025px]:px-10 min-[1025px]:pb-24 xl:px-32">
+        <div className="flex h-139 justify-center overflow-hidden px-6 pb-24 max-[767px]:h-109.5 max-[767px]:pb-10 sm:px-10 md:pb-36 min-[1024px]:h-128.5 min-[1025px]:h-131.5 min-[1025px]:px-10 min-[1025px]:pb-24 min-[1025px]:max-[1279px]:mx-auto min-[1025px]:max-[1279px]:w-full min-[1025px]:max-[1279px]:max-w-279 xl:px-32">
           <Image
             src="/shapes/shape-01.svg"
             alt=""
             aria-hidden="true"
             width={100}
             height={200}
-            className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 min-[1025px]:block"
+            className="pointer-events-none absolute left-0 top-1/2 hidden min-[1025px]:max-[1279px]:hidden -translate-y-1/2 min-[1025px]:block"
             priority
           />
 
@@ -71,16 +71,16 @@ export default function Home() {
             aria-hidden="true"
             width={358}
             height={100}
-            className="pointer-events-none absolute bottom-0 left-1/2 w-89.5 max-w-none -translate-x-1/2 max-[767px]:bottom-0 max-[767px]:w-88 min-[1025px]:left-auto min-[1025px]:right-10 min-[1025px]:translate-x-0 xl:right-41.25"
+            className="pointer-events-none absolute bottom-0 left-1/2 w-89.5 max-w-none -translate-x-1/2 max-[767px]:bottom-0 max-[767px]:w-88 min-[1025px]:left-auto min-[1025px]:right-10 min-[1025px]:translate-x-0 min-[1025px]:max-[1279px]:right-0 min-[1025px]:max-[1279px]:w-76 xl:right-41.25"
             priority
           />
 
           <div className="relative z-10 flex items-center max-[767px]:w-full max-[767px]:items-center">
-            <div className="relative grid w-full gap-14 max-[1024px]:justify-items-center max-[767px]:gap-6 md:gap-8 min-[1025px]:mb-8 min-[1025px]:grid-cols-[minmax(0,1fr)_minmax(18rem,27.8125rem)] min-[1025px]:items-center min-[1025px]:justify-between min-[1025px]:gap-10 xl:grid-cols-[minmax(0,635px)_minmax(0,445px)] xl:gap-8">
+            <div className="relative grid w-full gap-14 max-[1024px]:justify-items-center max-[767px]:gap-6 md:gap-8 min-[1025px]:mb-8 min-[1025px]:grid-cols-[minmax(0,1fr)_minmax(18rem,27.8125rem)] min-[1025px]:items-center min-[1025px]:justify-between min-[1025px]:gap-10 min-[1025px]:max-[1279px]:grid-cols-[minmax(0,1fr)_minmax(18rem,23.5rem)] min-[1025px]:max-[1279px]:gap-8 xl:grid-cols-[minmax(0,635px)_minmax(0,445px)] xl:gap-8">
               <div className="relative flex w-full justify-center max-[1024px]:text-center min-[1025px]:justify-start">
                 <h1
                   id="home-hero-title"
-                  className="relative max-w-[10ch] text-center min-[320px]:text-preset-4 min-[768px]:text-preset-2 max-[767px]:max-w-[9.75ch] max-[767px]:leading-[0.95] min-[1025px]:max-w-[10ch] min-[1025px]:text-left min-[1025px]:text-preset-1"
+                  className="relative max-w-[10ch] text-center min-[320px]:text-preset-4 min-[768px]:text-preset-2 max-[767px]:max-w-[9.75ch] max-[767px]:leading-[0.95] min-[1025px]:max-w-[10ch] min-[1025px]:text-left min-[1025px]:text-preset-1 min-[1025px]:max-[1279px]:max-w-[9ch] min-[1025px]:max-[1279px]:text-preset-2"
                 >
                   Find the{" "}
                   <span className="min-[1025px]:block min-[1025px]:whitespace-nowrap">
@@ -89,13 +89,13 @@ export default function Home() {
                 </h1>
               </div>
 
-              <div className="w-full max-[1024px]:text-center max-[767px]:max-w-84 min-[1025px]:max-w-111.25 min-[1025px]:justify-self-end max-[767px]:pb-24">
+              <div className="w-full max-[1024px]:text-center max-[767px]:max-w-84 min-[1025px]:max-w-111.25 min-[1025px]:justify-self-end min-[1025px]:max-[1279px]:max-w-94 max-[767px]:pb-24">
                 <div
                   aria-hidden="true"
-                  className="mb-20 hidden h-1 w-12.5 bg-teal-400 min-[1025px]:block"
+                  className="mb-20 hidden h-1 w-12.5 bg-teal-400 min-[1025px]:block min-[1025px]:max-[1279px]:mb-16"
                 />
 
-                <p className="min-[1024px]:max-w-172 text-center text-preset-7-semibold text-neutral-0/90 max-[767px]:mx-auto max-[1024px]:max-w-140 min-[1025px]:text-left min-[1025px]:text-preset-6-semibold">
+                <p className="min-[1024px]:max-w-172 text-center text-preset-7-semibold text-neutral-0/90 max-[767px]:mx-auto max-[1024px]:max-w-140 min-[1025px]:text-left min-[1025px]:text-preset-6-semibold min-[1025px]:max-[1279px]:max-w-94">
                   Finding the right people and building high performing teams
                   can be hard. Most companies aren&apos;t tapping into the
                   abundance of global talent. We&apos;re about to change that.
