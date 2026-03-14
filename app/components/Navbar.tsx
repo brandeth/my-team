@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Button from "./Button";
 
@@ -11,14 +10,12 @@ type NavbarProps = {
 };
 
 export default function Navbar({ className }: NavbarProps) {
-  const pathname = usePathname();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const isHomePage = pathname === "/";
   const navLinks = [
     { href: "/", label: "home" },
     { href: "/about", label: "about" },
   ];
-  const contactHref = isHomePage ? "#contact" : "/#contact";
+  const contactHref = "/contact";
   const classes = ["text-neutral-0 lg:pt-8 xl:pt-5", className]
     .filter(Boolean)
     .join(" ");
@@ -37,7 +34,7 @@ export default function Navbar({ className }: NavbarProps) {
               alt=""
               width={111}
               height={28}
-              className="h-auto w-36 sm:w-[9.25rem] md:w-[159.95px]"
+              className="h-auto w-36 sm:w-37 md:w-[159.95px]"
               priority
             />
           </Link>
@@ -59,7 +56,7 @@ export default function Navbar({ className }: NavbarProps) {
               viewBox="0 0 20 17"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="h-[1.125rem] w-[1.375rem] sm:h-5 sm:w-6"
+              className="h-4.5 w-5.5 sm:h-5 sm:w-6"
             >
               {isMobileMenuOpen ? (
                 <path

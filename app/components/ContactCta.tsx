@@ -36,7 +36,7 @@ export default function ContactCta() {
         </h2>
 
         <Button
-          href="#contact"
+          href="/contact"
           variant="secondary"
           className="lowercase whitespace-nowrap"
         >
