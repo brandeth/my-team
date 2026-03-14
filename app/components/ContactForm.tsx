@@ -37,6 +37,7 @@ const initialValues: ContactFormValues = {
 };
 
 const MESSAGE_MAX_LENGTH = 165;
+const CONTACT_API_ENDPOINT = "/api/contact";
 
 const requiredFieldNames = new Set<ContactFormFieldName>([
   "name",
@@ -92,6 +93,47 @@ function getFieldError(
   }
 
   return null;
+}
+
+function normalizeValues(values: ContactFormValues): ContactFormValues {
+  return {
+    name: values.name.trim(),
+    email: values.email.trim(),
+    company: values.company.trim(),
+    title: values.title.trim(),
+    message: values.message.trim(),
+  };
+}
+
+async function submitToContactRoute(values: ContactFormValues) {
+  const response = await fetch(CONTACT_API_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json",
+    },
+    body: JSON.stringify(values),
+  });
+
+  if (response.ok) {
+    return;
+  }
+
+  let errorMessage = "Something went wrong. Please try again.";
+
+  try {
+    const responseBody = (await response.json()) as {
+      error?: string;
+    };
+
+    if (typeof responseBody.error === "string" && responseBody.error) {
+      errorMessage = responseBody.error;
+    }
+  } catch {
+    // Ignore JSON parsing failures and fall back to the default message.
+  }
+
+  throw new Error(errorMessage);
 }
 
 export default function ContactForm({ className, onSubmit }: ContactFormProps) {
@@ -182,17 +224,28 @@ export default function ContactForm({ className, onSubmit }: ContactFormProps) {
       return;
     }
 
+    const submissionValues = normalizeValues(values);
+
     setIsSubmitting(true);
 
     try {
-      await onSubmit?.(values);
+      if (onSubmit) {
+        await onSubmit(submissionValues);
+      } else {
+        await submitToContactRoute(submissionValues);
+      }
+
       setValues(initialValues);
       setTouchedFields({});
       setFocusedField(null);
       setHasSubmitted(false);
       setSubmitMessage("Thanks for reaching out. We'll be in touch soon.");
-    } catch {
-      setSubmitMessage("Something went wrong. Please try again.");
+    } catch (error) {
+      setSubmitMessage(
+        error instanceof Error && error.message
+          ? error.message
+          : "Something went wrong. Please try again.",
+      );
     } finally {
       setIsSubmitting(false);
     }

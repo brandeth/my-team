@@ -27,6 +27,7 @@ export default function Navbar({ className }: NavbarProps) {
     { href: "/about", label: "about" },
   ];
   const contactHref = "/contact";
+  const contactNavAriaLabel = "Contact us from the main navigation";
   const classes = ["text-neutral-0 lg:pt-8 xl:pt-5", className]
     .filter(Boolean)
     .join(" ");
@@ -227,6 +228,7 @@ export default function Navbar({ className }: NavbarProps) {
           <div className="hidden justify-self-start md:block md:justify-self-end md:shrink-0">
             <Button
               href={contactHref}
+              aria-label={contactNavAriaLabel}
               className="lowercase whitespace-nowrap md:px-7 lg:px-8"
             >
               <span>contact us</span>
@@ -320,6 +322,7 @@ export default function Navbar({ className }: NavbarProps) {
                   <Button
                     href={contactHref}
                     variant="secondaryOnDark"
+                    aria-label={contactNavAriaLabel}
                     className="w-full lowercase"
                     onClick={closeMobileMenu}
                   >

@@ -2,6 +2,8 @@
 
 import Button from "./Button";
 
+const contactCtaAriaLabel = "Contact us to get started";
+
 export default function ContactCta() {
   return (
     <section
@@ -42,6 +44,7 @@ export default function ContactCta() {
         <Button
           href="/contact"
           variant="secondary"
+          aria-label={contactCtaAriaLabel}
           className="lowercase whitespace-nowrap"
         >
           <span>contact us</span>
