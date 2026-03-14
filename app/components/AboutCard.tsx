@@ -73,7 +73,7 @@ export default function AboutCard({
   }>;
   const hasSocialLinks = socialLinks.length > 0;
   const cardStyle = {
-    "--about-card-width": "350px",
+    "--about-card-width": "min(100%, 350px)",
     "--about-card-total-height": "281px",
     "--about-card-button-size": "56px",
     "--about-card-button-overlap": "calc(var(--about-card-button-size) / 2)",
@@ -158,8 +158,8 @@ export default function AboutCard({
           onClick={() => setIsExpanded((current) => !current)}
           className={`-mt-(--about-card-button-overlap) inline-flex h-(--about-card-button-size) w-(--about-card-button-size) cursor-pointer items-center justify-center rounded-full transition-[background-color,color] duration-300 focus-visible:outline-2 focus-visible:outline-offset-4 ${
             isExpanded
-              ? "bg-[#c8efee] text-[#0d5358] hover:bg-rose-500 focus-visible:outline-cyan-100"
-              : "bg-[#ef7d67] text-[#0d5358] hover:bg-cyan-100 focus-visible:outline-rose-500"
+              ? "bg-cyan-100 text-teal-900 hover:bg-rose-500 focus-visible:outline-cyan-100"
+              : "bg-rose-500 text-teal-900 hover:bg-cyan-100 focus-visible:outline-rose-500"
           }`}
         >
           <AboutCardToggleIcon

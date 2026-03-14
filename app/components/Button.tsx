@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { type ComponentPropsWithoutRef } from "react";
 
-type ButtonVariant = "primary" | "secondary";
+type ButtonVariant = "primary" | "secondary" | "secondaryOnDark";
 
 type ButtonAsButtonProps = ComponentPropsWithoutRef<"button"> & {
   href?: undefined;
@@ -23,6 +23,8 @@ const variantClasses: Record<ButtonVariant, string> = {
     "border-neutral-0 bg-transparent text-neutral-0 hover:bg-neutral-0 hover:text-teal-950 focus-visible:outline-neutral-0",
   secondary:
     "border-teal-900 bg-transparent text-teal-900 hover:bg-teal-900 hover:text-neutral-0 focus-visible:outline-teal-900",
+  secondaryOnDark:
+    "border-neutral-0 bg-transparent text-neutral-0 hover:bg-neutral-0 hover:text-teal-900 focus-visible:outline-neutral-0",
 };
 
 export default function Button({
