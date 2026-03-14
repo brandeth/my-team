@@ -1,4 +1,5 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
+
 import Link from "next/link";
 
 type FooterProps = {
@@ -57,12 +58,14 @@ export default function Footer({ className }: FooterProps) {
               aria-label="myteam home"
               className="inline-flex shrink-0 items-center transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-0"
             >
-              <Image
+              <img
                 src="/my-team-logo.svg"
                 alt=""
                 width={160}
                 height={40}
                 className="h-auto w-28 sm:w-37 min-[1025px]:w-56.25"
+                loading="lazy"
+                decoding="async"
               />
             </Link>
 
@@ -100,11 +103,13 @@ export default function Footer({ className }: FooterProps) {
                   rel="noreferrer"
                   className="inline-flex h-6 w-6 items-center justify-center text-neutral-0 transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-0"
                 >
-                  <Image
+                  <img
                     src={link.icon}
                     alt=""
                     width={link.width}
                     height={link.height}
+                    loading="lazy"
+                    decoding="async"
                   />
                 </Link>
               </li>

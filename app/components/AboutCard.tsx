@@ -1,6 +1,8 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
+/* eslint-disable @next/next/no-img-element */
+
+import { type StaticImageData } from "next/image";
 import { type CSSProperties, type ReactElement, useId, useState } from "react";
 
 import AboutCardToggleIcon from "./AboutCardToggleIcon";
@@ -50,6 +52,7 @@ export default function AboutCard({
 }: AboutCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const panelId = useId();
+  const portraitSrc = typeof image === "string" ? image : image.src;
   const displayedDescription = description.slice(0, 100);
   const socialLinks = [
     twitter
@@ -126,12 +129,14 @@ export default function AboutCard({
         ) : (
           <div className="flex h-full flex-col items-center text-center">
             <div className="relative h-24 w-24 shrink-0 overflow-hidden rounded-full bg-[#0a474b]">
-              <Image
-                src={image}
+              <img
+                src={portraitSrc}
                 alt={name}
-                fill
-                sizes="96px"
-                className="object-cover"
+                width="96"
+                height="96"
+                loading="lazy"
+                decoding="async"
+                className="h-full w-full object-cover"
               />
             </div>
 

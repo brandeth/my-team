@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 
 import ContactForm from "@/app/components/ContactForm";
 
@@ -24,24 +24,28 @@ export default function ContactPage() {
         aria-labelledby="contact-page-title"
         className="relative isolate overflow-hidden pb-22 pt-32 sm:pb-24 sm:pt-34 md:pb-28 md:pt-52 min-[768px]:max-[1024px]:h-301 min-[768px]:max-[1024px]:pb-30 min-[1025px]:h-197.25 min-[1025px]:pb-24 min-[1025px]:pt-40"
       >
-        <Image
+        <img
           src="/shapes/shape-11.svg"
           alt=""
           aria-hidden="true"
           width={100}
           height={200}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="pointer-events-none absolute -left-16 top-18 z-0 hidden w-25 max-w-none sm:block sm:-left-10 sm:top-20 md:left-0 md:top-60 min-[768px]:max-[1024px]:-left-18 min-[768px]:max-[1024px]:top-46 min-[768px]:max-[1024px]:w-27 min-[1025px]:-left-8 min-[1025px]:top-61 xl:left-0 min-[1025px]:max-[1281px]:w-16"
-          priority
         />
 
-        <Image
+        <img
           src="/shapes/shape-12.svg"
           alt=""
           aria-hidden="true"
           width={224}
           height={200}
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="pointer-events-none absolute -bottom-28 -right-16 z-0 h-57 max-w-none min-[768px]:max-[1025px]:bottom-0 min-[768px]:max-[1024px]:-right-16 min-[1025px]:bottom-0 min-[1025px]:right-0  xl:-right-16 min-[1025px]:max-[1281px]:w-50 min-[1025px]:max-[1281px]:h-45"
-          priority
         />
         {/* xl:h-56 xl:w-[224.49px] sm:w-64 sm:-right-20 */}
 
@@ -71,12 +75,14 @@ export default function ContactPage() {
                         className="absolute left-4 top-4 h-14 w-14 rounded-full bg-teal-700"
                       />
 
-                      <Image
+                      <img
                         src={topic.icon}
                         alt=""
                         aria-hidden="true"
                         width={56}
                         height={56}
+                        loading="lazy"
+                        decoding="async"
                         className="absolute left-0 top-0 z-10 h-14 w-14 shrink-0"
                       />
                     </div>

@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 import { type ComponentProps } from "react";
 
 import AboutCard from "../../components/AboutCard";
@@ -98,14 +98,16 @@ export default function AboutPage() {
         aria-labelledby="about-hero-title"
         className="relative isolate overflow-hidden pt-32 sm:pt-34 md:pt-52 min-[768px]:max-[1024px]:box-border min-[768px]:max-[1025px]:h-139 min-[768px]:max-[1024px]:min-h-0 min-[768px]:max-[1024px]:max-h-139 min-[1025px]:min-h-0 min-[1025px]:max-h-129.25 min-[1025px]:pt-46.5 xl:pt-43.5"
       >
-        <Image
+        <img
           src="/shapes/shape-07.svg"
           alt=""
           aria-hidden="true"
           width={100}
           height={200}
-          className="pointer-events-none absolute -bottom-25 min-[768px]:max-[1025px]:bottom-0 right-0 z-0 w-25 max-w-none min-[768px]:max-[1024px]:bottom-0"
-          priority
+          className="pointer-events-none absolute -bottom-25 min-[768px]:max-[1025px]:bottom-0 right-0 z-0 h-auto w-25 max-w-none min-[768px]:max-[1024px]:bottom-0"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
         />
 
         <div className="relative z-10 mx-auto flex w-full max-w-277.5 px-6 pb-28 pt-6 sm:px-10 md:pb-36 md:pt-0 min-[768px]:max-[1024px]:h-full min-[768px]:max-[1024px]:max-w-132 min-[768px]:max-[1024px]:items-center min-[768px]:max-[1024px]:px-10 min-[768px]:max-[1024px]:pb-16 min-[768px]:max-[1024px]:pt-0 min-[1025px]:px-20 min-[1025px]:pb-30 xl:px-0">
@@ -141,22 +143,26 @@ export default function AboutPage() {
         aria-labelledby="about-directors-title"
         className="relative isolate overflow-hidden bg-teal-850 px-6 py-22 sm:px-10 md:py-25 min-[1025px]:max-h-250.5 lg:px-20 lg:py-35 xl:px-0"
       >
-        <Image
+        <img
           src="/shapes/shape-08.svg"
           alt=""
           aria-hidden="true"
           width={100}
           height={200}
-          className="pointer-events-none absolute left-0 -top-25 min-[768px]:max-[1025px]:top-0 z-0 w-25 max-w-none"
+          className="pointer-events-none absolute left-0 -top-25 min-[768px]:max-[1025px]:top-0 z-0 h-auto w-25 max-w-none"
+          loading="lazy"
+          decoding="async"
         />
 
-        <Image
+        <img
           src="/shapes/shape-09.svg"
           alt=""
           aria-hidden="true"
           width={147}
           height={100}
-          className="pointer-events-none absolute bottom-0 right-0 z-0 w-36.75 max-w-none"
+          className="pointer-events-none absolute bottom-0 right-0 z-0 h-auto w-36.75 max-w-none"
+          loading="lazy"
+          decoding="async"
         />
 
         <div className="relative z-10 mx-auto flex w-full max-w-277.5 flex-col items-center gap-12 md:gap-16 lg:gap-16">
@@ -187,13 +193,15 @@ export default function AboutPage() {
         aria-labelledby="about-clients-title"
         className="relative isolate overflow-hidden bg-teal-900 px-6 py-22 sm:px-10 md:py-25 min-[1025px]:max-h-109.25 lg:px-20 lg:py-35 xl:px-0"
       >
-        <Image
+        <img
           src="/shapes/shape-10.svg"
           alt=""
           aria-hidden="true"
           width={200}
           height={200}
-          className="pointer-events-none absolute -left-25 min-[768px]:max-[1025px]:left-0 -top-25 min-[768px]:max-[1025px]:-top-25 xl:left-0 xl:top-0 z-0 max-w-none"
+          className="pointer-events-none absolute -left-25 min-[768px]:max-[1025px]:left-0 -top-25 min-[768px]:max-[1025px]:-top-25 xl:left-0 xl:top-0 z-0 h-auto max-w-none"
+          loading="lazy"
+          decoding="async"
         />
 
         <div className="relative z-10 mx-auto flex w-full max-w-290 flex-col items-center gap-12 md:gap-12 min-[1025px]:h-full min-[1025px]:justify-center">
@@ -210,11 +218,13 @@ export default function AboutPage() {
                 key={client.name}
                 className="flex min-h-18 w-full items-center justify-center"
               >
-                <Image
+                <img
                   src={client.image}
                   alt={client.name}
                   width={client.width}
                   height={client.height}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             ))}
