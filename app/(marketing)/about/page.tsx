@@ -104,13 +104,13 @@ export default function AboutPage() {
           aria-hidden="true"
           width={100}
           height={200}
-          className="pointer-events-none absolute -bottom-25 min-[768px]:max-[1025px]:bottom-0 right-0 z-0 h-auto w-25 max-w-none min-[768px]:max-[1024px]:bottom-0"
+          className="pointer-events-none absolute -bottom-25 min-[768px]:max-[1025px]:bottom-0 right-0 z-0 h-auto w-25 max-w-none min-[768px]:max-[1024px]:bottom-0 min-[1025px]:bottom-0"
           loading="eager"
           fetchPriority="high"
           decoding="async"
         />
 
-        <div className="relative z-10 mx-auto flex w-full max-w-277.5 px-6 pb-28 pt-6 sm:px-10 md:pb-36 md:pt-0 min-[768px]:max-[1024px]:h-full min-[768px]:max-[1024px]:max-w-132 min-[768px]:max-[1024px]:items-center min-[768px]:max-[1024px]:px-10 min-[768px]:max-[1024px]:pb-16 min-[768px]:max-[1024px]:pt-0 min-[1025px]:px-20 min-[1025px]:pb-30 xl:px-0">
+        <div className="relative z-10 mx-auto flex w-full max-w-277.5 px-6 pb-28 pt-6 sm:px-10 md:pb-36 min-[768px]:max-[1024px]:h-full min-[768px]:max-[1024px]:max-w-132 min-[768px]:max-[1024px]:items-center min-[768px]:max-[1024px]:px-10 min-[768px]:max-[1024px]:pb-16 min-[768px]:max-[1024px]:pt-0 min-[1025px]:px-20 min-[1025px]:pb-30 xl:px-0 min-[1025px]:pt-12.5">
           <div className="grid w-full gap-5 text-center min-[768px]:max-[1024px]:content-center min-[768px]:max-[1024px]:justify-items-center min-[768px]:max-[1024px]:gap-6 min-[1025px]:grid-cols-[minmax(0,16rem)_minmax(0,45.625rem)] min-[1025px]:items-start min-[1025px]:justify-between min-[1025px]:gap-20 min-[1025px]:text-left">
             <div className="mt-4 flex justify-center min-[768px]:max-[1024px]:mt-0 min-[1025px]:justify-start">
               <h1
@@ -121,10 +121,10 @@ export default function AboutPage() {
               </h1>
             </div>
 
-            <div className="mx-auto flex flex-col items-center min-[768px]:max-[1025px]:max-w-143 min-[1025px]:mx-0 min-[1025px]:max-w-none min-[1025px]:items-start min-[1025px]:pt-4">
+            <div className="mx-auto flex pl-2 flex-col items-center min-[768px]:max-[1025px]:max-w-143 min-[1025px]:mx-0 min-[1025px]:max-w-none min-[1025px]:items-start min-[1025px]:pt-4">
               <div
                 aria-hidden="true"
-                className="mb-10 h-1 w-12.5 bg-rose-500 min-[320px]:max-[1025px]:hidden min-[1025px]:mb-12"
+                className="mb-10 h-1 w-12.5 bg-rose-500 min-[320px]:max-[1025px]:hidden min-[1025px]:mb-10"
               />
 
               <p className="w-full text-center text-preset-7-semibold text-neutral-0/90 min-[768px]:max-[1024px]:max-w-143 min-[1025px]:text-left min-[1025px]:text-preset-6-semibold">
@@ -149,7 +149,7 @@ export default function AboutPage() {
           aria-hidden="true"
           width={100}
           height={200}
-          className="pointer-events-none absolute left-0 -top-25 min-[768px]:max-[1025px]:top-0 z-0 h-auto w-25 max-w-none"
+          className="pointer-events-none absolute left-0 -top-25 min-[768px]:max-[1025px]:top-0 z-0 h-auto w-25 max-w-none min-[1025px]:top-0"
           loading="lazy"
           decoding="async"
         />

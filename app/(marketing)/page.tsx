@@ -7,19 +7,19 @@ export default function Home() {
     {
       title: "Experienced Individuals",
       description:
-        "Our network is made up of seasoned specialists who care deeply about building stronger teams.",
+        "Our network is made up of highly experienced professionals who are passionate about what they do.",
       icon: "/icons/experienced-individuals.svg",
     },
     {
       title: "Easy to Implement",
       description:
-        "Our approach is refined for fast adoption, so your team can start moving with confidence.",
+        "Our processes have been refined over years of implementation meaning our teams always deliver.",
       icon: "/icons/easy-to-implement.svg",
     },
     {
       title: "Enhanced Productivity",
       description:
-        "Built-in insight and support help distributed teams stay aligned, accountable, and effective.",
+        "Our customized platform with in-built analytics helps you manage your distributed teams.",
       icon: "/icons/enhanced-productivity.svg",
     },
   ];
@@ -113,7 +113,7 @@ export default function Home() {
       <section
         id="about"
         aria-labelledby="home-features-title"
-        className="min-[1025px] min-[1025px]:h-171 relative isolate overflow-hidden bg-teal-900 px-6 py-16 sm:px-10 min-[768px]:py-24 min-[1025px]:px-10 min-[1025px]:pt-36 xl:px-32 flex flex-col justify-center"
+        className="min-[1025px]:h-171 relative isolate overflow-hidden bg-teal-900 px-6 py-16 sm:px-10 min-[768px]:py-24 min-[1025px]:px-10 xl:px-32 flex flex-col justify-center"
       >
         <img
           src="/shapes/shape-03.svg"
@@ -137,11 +137,11 @@ export default function Home() {
           decoding="async"
         />
 
-        <div className="flex flex-col min-[768px]:px-10">
-          <div aria-hidden="true" className="h-1 w-12.5 bg-rose-500" />
+        <div className="flex flex-col min-[768px]:px-11 mt-13">
+          <div aria-hidden="true" className="h-1 w-12.5 bg-rose-500 mb-4" />
 
-          <div className="relative z-10 grid gap-14 min-[768px]:gap-16 min-[1025px]:h-full min-[1025px]:grid-cols-[minmax(0,27.8125rem)_minmax(0,40.75rem)] min-[1025px]:items-start min-[1025px]:justify-between min-[1025px]:gap-28 ">
-            <div className="min-[1025px]:self-start ">
+          <div className="relative z-10 grid gap-14 min-[768px]:gap-16 min-[1025px]:h-full min-[1025px]:grid-cols-[minmax(0,27.8125rem)_minmax(0,40.75rem)] min-[1025px]:items-start min-[1025px]:justify-between min-[1025px]:gap-31 ">
+            <div className="min-[1025px]:self-start">
               <h2
                 id="home-features-title"
                 className="mt-8 text-preset-5 min-[768px]:mt-10 min-[768px]:text-left min-[1025px]:text-preset-3 max-[767px]:max-w-58 min-[768px]:max-w-125 min-[1024px]:max-w-none"
@@ -150,7 +150,7 @@ export default function Home() {
               </h2>
             </div>
 
-            <div className="grid gap-12 min-[768px]:gap-8 min-[768px]:pb-10 min-[1025px]:self-center min-[1025px]:content-center min-[1025px]:gap-6 min-[1025px]:py-10 min-[1025px]:pt-9">
+            <div className="grid gap-12 min-[768px]:gap-8 min-[768px]:pb-10 min-[1025px]:self-center min-[1025px]:content-center min-[1025px]:gap-6 min-[1025px]:py-10">
               {featureHighlights.map((feature) => (
                 <article
                   key={feature.title}
@@ -174,7 +174,7 @@ export default function Home() {
                     />
                   </div>
 
-                  <div className="grid gap-2 min-[768px]:pt-2">
+                  <div className="grid gap-4 min-[768px]:pt-1">
                     <h3 className="text-preset-6-bold text-rose-500">
                       {feature.title}
                     </h3>
@@ -216,7 +216,7 @@ export default function Home() {
           decoding="async"
         />
 
-        <div className="relative z-10 mx-auto flex max-w-279 flex-col items-center gap-12 min-[768px]:gap-12">
+        <div className="relative z-10 mx-auto flex max-w-279 flex-col items-center gap-12 min-[768px]:gap-15">
           <h2
             id="home-testimonials-title"
             className="max-w-none min-[768px]:max-w-44 text-center text-preset-5 text-neutral-0 min-[768px]:max-w-120 min-[768px]:text-preset-5 min-[1025px]:text-preset-3 min-[1025px]:max-w-237.5"
