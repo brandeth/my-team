@@ -121,7 +121,7 @@ export default function AboutPage() {
               </h1>
             </div>
 
-            <div className="mx-auto flex pl-2 flex-col items-center min-[768px]:max-[1025px]:max-w-143 min-[1025px]:mx-0 min-[1025px]:max-w-none min-[1025px]:items-start min-[1025px]:pt-4">
+            <div className="mx-auto flex min-[1025px]:pl-2 flex-col items-center min-[768px]:max-[1025px]:max-w-143 min-[1025px]:mx-0 min-[1025px]:max-w-none min-[1025px]:items-start min-[1025px]:pt-4">
               <div
                 aria-hidden="true"
                 className="mb-10 h-1 w-12.5 bg-rose-500 min-[320px]:max-[1025px]:hidden min-[1025px]:mb-10"
