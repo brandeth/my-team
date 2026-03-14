@@ -30,7 +30,7 @@ export default function ContactPage() {
           aria-hidden="true"
           width={100}
           height={200}
-          className="pointer-events-none absolute -left-16 top-18 z-0 w-25 min-[768px]:max-[1024px]:w-27 max-w-none sm:-left-10 sm:top-20 md:left-0 md:top-50 min-[768px]:max-[1024px]:-left-18 min-[768px]:max-[1024px]:top-46 min-[1025px]:-left-8 min-[1025px]:top-61 xl:left-0"
+          className="pointer-events-none absolute -left-16 top-18 z-0 hidden w-25 max-w-none sm:block sm:-left-10 sm:top-20 md:left-0 md:top-50 min-[768px]:max-[1024px]:-left-18 min-[768px]:max-[1024px]:top-46 min-[768px]:max-[1024px]:w-27 min-[1025px]:-left-8 min-[1025px]:top-61 xl:left-0"
           priority
         />
 
@@ -40,29 +40,29 @@ export default function ContactPage() {
           aria-hidden="true"
           width={224}
           height={200}
-          className="pointer-events-none absolute bottom-0 right-0 z-0 h-57 max-w-none sm:bottom-0 sm:-right-20 sm:w-64 min-[768px]:max-[1024px]:-bottom-0.5 min-[768px]:max-[1024px]:right-0 min-[1025px]:bottom-0 min-[1025px]:right-0 xl:h-56 xl:w-[224.49px] xl:-right-16"
+          className="pointer-events-none absolute -bottom-28 -right-16 z-0 h-57 max-w-none sm:bottom-0 sm:-right-20 sm:w-64 min-[768px]:max-[1024px]:-bottom-0.5 min-[768px]:max-[1024px]:right-0 min-[1025px]:bottom-0 min-[1025px]:right-0 xl:h-56 xl:w-[224.49px] xl:-right-16"
           priority
         />
 
         <div className="relative z-10 mx-auto w-full px-6 sm:px-10 min-[768px]:max-[1024px]:h-full min-[768px]:max-[1024px]:max-w-143 min-[1025px]:px-20 xl:max-w-277.5 xl:px-0">
           <div className="grid w-full gap-14 md:gap-16 min-[768px]:max-[1024px]:content-start min-[768px]:max-[1024px]:justify-items-center min-[768px]:max-[1024px]:gap-16 min-[1025px]:grid-cols-[minmax(0,28rem)_minmax(0,33.75rem)] min-[1025px]:items-start min-[1025px]:justify-between min-[1025px]:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,33.75rem)] xl:gap-18">
-            <div className="flex flex-col items-start text-left min-[768px]:max-[1025px]:mx-auto min-[768px]:max-[1025px]:w-full min-[768px]:max-[1025px]:max-w-120 min-[768px]:max-[1025px]:items-center min-[1025px]:pt-8">
+            <div className="flex flex-col items-center pt-14 text-center min-[768px]:max-[1025px]:mx-auto min-[768px]:max-[1025px]:w-full min-[768px]:max-[1025px]:max-w-120 min-[1025px]:items-start min-[1025px]:text-left min-[1025px]:pt-8">
               <h1
                 id="contact-page-title"
-                className="text-preset-4 sm:text-[4rem] sm:leading-none min-[768px]:max-[1024px]:text-center min-[1025px]:text-preset-2"
+                className="text-preset-4 sm:text-[4rem] sm:leading-none min-[1025px]:text-preset-2"
               >
                 Contact
               </h1>
 
-              <p className="mt-4 xl:mt-8 text-preset-5 text-rose-500 min-[768px]:max-[1024px]:text-center md:text-preset-5">
+              <p className="mt-4 text-preset-5 text-rose-500 md:text-preset-5 xl:mt-8">
                 Ask us about
               </p>
 
-              <div className="mt-10 grid w-full gap-2 sm:mt-10 min-[768px]:max-[1024px]:max-w-200 min-[768px]:max-[1024px]:gap-3">
+              <div className="mt-14 grid w-full gap-6 min-[768px]:max-[1025px]:gap-2 min-[768px]:max-[1024px]:max-w-200 min-[768px]:max-[1024px]:gap-3">
                 {contactTopics.map((topic) => (
                   <article
                     key={topic.label}
-                    className="grid gap-4 sm:grid-cols-[5rem_minmax(0,1fr)] sm:items-center sm:gap-5"
+                    className="grid w-full grid-cols-[5rem_minmax(0,1fr)] items-center gap-5 text-left"
                   >
                     <div className="relative h-18 w-18 shrink-0">
                       <span
