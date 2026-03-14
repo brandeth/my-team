@@ -102,8 +102,7 @@ export default function Footer({ className }: FooterProps) {
                 >
                   <Image
                     src={link.icon}
-                    alt={`${link.label} icon`}
-                    aria-hidden="true"
+                    alt=""
                     width={link.width}
                     height={link.height}
                   />

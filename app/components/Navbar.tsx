@@ -231,101 +231,100 @@ export default function Navbar({ className }: NavbarProps) {
           </div>
         </div>
 
-        {isMobileMenuMounted ? (
+        <div
+          hidden={!isMobileMenuMounted}
+          className={[
+            "fixed inset-0 z-60 md:hidden",
+            mobileMenuState === "closing" || !isMobileMenuMounted
+              ? "pointer-events-none"
+              : "pointer-events-auto",
+          ]
+            .filter(Boolean)
+            .join(" ")}
+        >
           <div
+            aria-hidden="true"
             className={[
-              "fixed inset-0 z-60 md:hidden",
-              mobileMenuState === "closing"
-                ? "pointer-events-none"
-                : "pointer-events-auto",
+              "absolute inset-0 bg-teal-950/72 backdrop-blur-[2px] transition-opacity duration-300 ease-out",
+              isMobileMenuVisible ? "opacity-100" : "opacity-0",
             ]
               .filter(Boolean)
               .join(" ")}
-          >
-            <div
-              aria-hidden="true"
+            onClick={closeMobileMenu}
+          />
+
+          <div className="absolute inset-y-0 right-0 flex w-full justify-end pl-6 sm:pl-10">
+            <nav
+              id="mobile-primary-navigation"
+              aria-label="Mobile primary"
+              aria-hidden={isMobileMenuVisible ? undefined : true}
               className={[
-                "absolute inset-0 bg-teal-950/72 backdrop-blur-[2px] transition-opacity duration-300 ease-out",
-                isMobileMenuVisible ? "opacity-100" : "opacity-0",
+                "relative flex h-full w-full max-w-63.75 flex-col overflow-hidden bg-teal-700 px-6 pb-8 pt-28 text-neutral-0 shadow-[-24px_0_48px_rgba(1,47,52,0.28)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
+                isMobileMenuVisible ? "translate-x-0" : "translate-x-full",
               ]
                 .filter(Boolean)
                 .join(" ")}
-              onClick={closeMobileMenu}
-            />
-
-            <div className="absolute inset-y-0 right-0 flex w-full justify-end pl-6 sm:pl-10">
-              <nav
-                id="mobile-primary-navigation"
-                aria-label="Mobile primary"
-                aria-hidden={isMobileMenuVisible ? undefined : true}
-                className={[
-                  "relative flex h-full w-full max-w-63.75 flex-col overflow-hidden bg-teal-700 px-6 pb-8 pt-28 text-neutral-0 shadow-[-24px_0_48px_rgba(1,47,52,0.28)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
-                  isMobileMenuVisible ? "translate-x-0" : "translate-x-full",
-                ]
-                  .filter(Boolean)
-                  .join(" ")}
+            >
+              <button
+                type="button"
+                aria-label="Close navigation menu"
+                className="absolute right-6 top-10 z-20 inline-flex h-11 w-11 items-center justify-center text-neutral-0 transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-0 sm:h-12 sm:w-12"
+                onClick={closeMobileMenu}
               >
-                <button
-                  type="button"
-                  aria-label="Close navigation menu"
-                  className="absolute right-6 top-10 z-20 inline-flex h-11 w-11 items-center justify-center text-neutral-0 transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-0 sm:h-12 sm:w-12"
-                  onClick={closeMobileMenu}
-                >
-                  <svg
-                    aria-hidden="true"
-                    viewBox="0 0 20 17"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-4.5 w-5.5 sm:h-5 sm:w-6"
-                  >
-                    <path
-                      d="M2 2L18 15M18 2L2 15"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="square"
-                    />
-                  </svg>
-                </button>
-
-                <Image
-                  src="/shapes/shape-13.svg"
-                  alt=""
+                <svg
                   aria-hidden="true"
-                  width={100}
-                  height={200}
-                  className="pointer-events-none absolute bottom-0 right-0 z-0 h-auto w-20 select-none"
-                />
+                  viewBox="0 0 20 17"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-4.5 w-5.5 sm:h-5 sm:w-6"
+                >
+                  <path
+                    d="M2 2L18 15M18 2L2 15"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="square"
+                  />
+                </svg>
+              </button>
 
-                <div className="relative z-10 flex h-full flex-col">
-                  <ul className="flex flex-col items-start gap-6">
-                    {navLinks.map((link) => (
-                      <li key={link.label} className="w-full">
-                        <Link
-                          href={link.href}
-                          className="text-preset-6-semibold inline-flex lowercase text-neutral-0 transition-colors duration-200 hover:text-teal-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-0"
-                          onClick={closeMobileMenu}
-                        >
-                          {link.label}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
+              <Image
+                src="/shapes/shape-13.svg"
+                alt=""
+                aria-hidden="true"
+                width={100}
+                height={200}
+                className="pointer-events-none absolute bottom-0 right-0 z-0 h-auto w-20 select-none"
+              />
 
-                  <div className="mt-8 border-t border-neutral-0/20 pt-6">
-                    <Button
-                      href={contactHref}
-                      variant="secondaryOnDark"
-                      className="w-full lowercase"
-                      onClick={closeMobileMenu}
-                    >
-                      <span>contact us</span>
-                    </Button>
-                  </div>
+              <div className="relative z-10 flex h-full flex-col">
+                <ul className="flex flex-col items-start gap-6">
+                  {navLinks.map((link) => (
+                    <li key={link.label} className="w-full">
+                      <Link
+                        href={link.href}
+                        className="text-preset-6-semibold inline-flex lowercase text-neutral-0 transition-colors duration-200 hover:text-teal-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-0"
+                        onClick={closeMobileMenu}
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+
+                <div className="mt-8 border-t border-neutral-0/20 pt-6">
+                  <Button
+                    href={contactHref}
+                    variant="secondaryOnDark"
+                    className="w-full lowercase"
+                    onClick={closeMobileMenu}
+                  >
+                    <span>contact us</span>
+                  </Button>
                 </div>
-              </nav>
-            </div>
+              </div>
+            </nav>
           </div>
-        ) : null}
+        </div>
       </div>
     </header>
   );

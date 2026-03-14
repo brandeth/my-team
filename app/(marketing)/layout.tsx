@@ -8,7 +8,7 @@ export default function MarketingLayout({
 }>) {
   return (
     <div className="relative">
-      <Navbar className="absolute inset-x-0 top-0 z-20 bg-transparent pt-4 xl:pt-5" />
+      <Navbar className="absolute inset-x-0 top-0 z-20 bg-transparent pt-4" />
       {children}
       <Footer />
     </div>

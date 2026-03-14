@@ -5,6 +5,7 @@ import {
   type FormEvent,
   useId,
   useMemo,
+  useRef,
   useState,
 } from "react";
 
@@ -37,6 +38,12 @@ const initialValues: ContactFormValues = {
 
 const MESSAGE_MAX_LENGTH = 165;
 
+const requiredFieldNames = new Set<ContactFormFieldName>([
+  "name",
+  "email",
+  "message",
+]);
+
 const fieldOrder: Array<{
   name: ContactFormFieldName;
   label: string;
@@ -67,6 +74,10 @@ function getFieldError(
   fieldName: ContactFormFieldName,
   value: string,
 ): string | null {
+  if (!requiredFieldNames.has(fieldName)) {
+    return null;
+  }
+
   const trimmedValue = value.trim();
 
   if (!trimmedValue) {
@@ -85,6 +96,14 @@ function getFieldError(
 
 export default function ContactForm({ className, onSubmit }: ContactFormProps) {
   const formId = useId();
+  const fieldRefs = useRef<
+    Partial<
+      Record<
+        ContactFormFieldName,
+        HTMLInputElement | HTMLTextAreaElement | null
+      >
+    >
+  >({});
   const [values, setValues] = useState(initialValues);
   const [touchedFields, setTouchedFields] = useState<
     Partial<Record<ContactFormFieldName, boolean>>
@@ -152,6 +171,14 @@ export default function ContactForm({ className, onSubmit }: ContactFormProps) {
     });
 
     if (Object.keys(errors).length > 0) {
+      const firstInvalidField = fieldOrder.find((field) => errors[field.name]);
+
+      if (firstInvalidField) {
+        requestAnimationFrame(() => {
+          fieldRefs.current[firstInvalidField.name]?.focus();
+        });
+      }
+
       return;
     }
 
@@ -172,15 +199,27 @@ export default function ContactForm({ className, onSubmit }: ContactFormProps) {
   }
 
   const formClasses = ["w-full", className].filter(Boolean).join(" ");
+  const hasVisibleErrors = fieldOrder.some(
+    (field) =>
+      Boolean(errors[field.name]) &&
+      (hasSubmitted || touchedFields[field.name]),
+  );
 
   return (
     <form noValidate className={formClasses} onSubmit={handleSubmit}>
+      {hasVisibleErrors ? (
+        <p className="sr-only" role="alert">
+          Please correct the errors in the required fields and try again.
+        </p>
+      ) : null}
+
       <div className="grid gap-5 sm:gap-6 min-[1025px]:gap-4">
         {fieldOrder.map((field) => {
           const fieldId = `${formId}-${field.name}`;
           const errorId = `${fieldId}-error`;
           const value = values[field.name];
           const error = errors[field.name];
+          const isRequired = requiredFieldNames.has(field.name);
           const showError =
             Boolean(error) && (hasSubmitted || touchedFields[field.name]);
           const hasValue = value.trim().length > 0;
@@ -208,18 +247,27 @@ export default function ContactForm({ className, onSubmit }: ContactFormProps) {
 
           return (
             <div key={field.name} className="grid gap-2">
+              <label htmlFor={fieldId} className="sr-only">
+                {field.label}
+                {isRequired ? " (required)" : ""}
+              </label>
+
               <div className={wrapperClasses}>
                 {field.name === "message" ? (
                   <textarea
+                    ref={(element) => {
+                      fieldRefs.current[field.name] = element;
+                    }}
                     id={fieldId}
                     name={field.name}
                     rows={field.rows}
                     maxLength={MESSAGE_MAX_LENGTH}
                     value={value}
                     autoComplete={field.autoComplete}
-                    aria-label={field.label}
+                    required={isRequired}
                     aria-invalid={showError}
                     aria-describedby={showError ? errorId : undefined}
+                    aria-errormessage={showError ? errorId : undefined}
                     placeholder={field.label}
                     onChange={handleChange}
                     onFocus={() => setFocusedField(field.name)}
@@ -228,14 +276,18 @@ export default function ContactForm({ className, onSubmit }: ContactFormProps) {
                   />
                 ) : (
                   <input
+                    ref={(element) => {
+                      fieldRefs.current[field.name] = element;
+                    }}
                     id={fieldId}
                     name={field.name}
                     type={field.name === "email" ? "email" : "text"}
                     value={value}
                     autoComplete={field.autoComplete}
-                    aria-label={field.label}
+                    required={isRequired}
                     aria-invalid={showError}
                     aria-describedby={showError ? errorId : undefined}
+                    aria-errormessage={showError ? errorId : undefined}
                     placeholder={field.label}
                     onChange={handleChange}
                     onFocus={() => setFocusedField(field.name)}
@@ -246,7 +298,11 @@ export default function ContactForm({ className, onSubmit }: ContactFormProps) {
               </div>
 
               {showError ? (
-                <p id={errorId} className="text-preset-8 text-rose-500 px-3">
+                <p
+                  id={errorId}
+                  className="text-preset-8 text-rose-500 px-3"
+                  role="alert"
+                >
                   {error}
                 </p>
               ) : null}
