@@ -1,6 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
+
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useRef, useState } from "react";
@@ -156,13 +157,15 @@ export default function Navbar({ className }: NavbarProps) {
             className="inline-flex shrink-0 items-center justify-self-start transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-0"
             onClick={closeMobileMenu}
           >
-            <Image
+            <img
               src="/my-team-logo.svg"
               alt=""
               width={111}
               height={28}
               className="h-auto w-36 sm:w-37 md:w-[159.95px]"
-              priority
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
             />
           </Link>
 
@@ -287,13 +290,15 @@ export default function Navbar({ className }: NavbarProps) {
                 </svg>
               </button>
 
-              <Image
+              <img
                 src="/shapes/shape-13.svg"
                 alt=""
                 aria-hidden="true"
                 width={100}
                 height={200}
                 className="pointer-events-none absolute bottom-0 right-0 z-0 h-auto w-20 select-none"
+                loading="lazy"
+                decoding="async"
               />
 
               <div className="relative z-10 flex h-full flex-col">

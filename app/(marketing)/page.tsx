@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* eslint-disable @next/next/no-img-element */
 
 import ContactCta from "../components/ContactCta";
 
@@ -55,24 +55,28 @@ export default function Home() {
         className="relative isolate bg-teal-800 pt-[8rem] sm:pt-[8.5rem] md:pt-[13rem] lg:pt-[11.625rem] xl:pt-[10.875rem]"
       >
         <div className="flex h-139 justify-center overflow-hidden px-6 pb-24 max-[767px]:h-109.5 max-[767px]:pb-10 sm:px-10 md:pb-36 min-[1024px]:h-128.5 min-[1025px]:h-131.5 min-[1025px]:px-10 min-[1025px]:pb-24 min-[1025px]:max-[1279px]:mx-auto min-[1025px]:max-[1279px]:w-full min-[1025px]:max-[1279px]:max-w-279 xl:px-32">
-          <Image
+          <img
             src="/shapes/shape-01.svg"
             alt=""
             aria-hidden="true"
             width={100}
             height={200}
             className="pointer-events-none absolute left-0 top-1/2 hidden min-[1025px]:max-[1279px]:hidden -translate-y-1/2 min-[1025px]:block"
-            priority
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
 
-          <Image
+          <img
             src="/shapes/shape-02.svg"
             alt=""
             aria-hidden="true"
             width={358}
             height={100}
             className="pointer-events-none absolute bottom-0 left-1/2 w-89.5 max-w-none -translate-x-1/2 max-[767px]:bottom-0 max-[767px]:w-88 min-[1025px]:left-auto min-[1025px]:right-10 min-[1025px]:translate-x-0 min-[1025px]:max-[1279px]:right-0 min-[1025px]:max-[1279px]:w-76 xl:right-41.25"
-            priority
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
 
           <div className="relative z-10 flex items-center max-[767px]:w-full max-[767px]:items-center">
@@ -111,22 +115,26 @@ export default function Home() {
         aria-labelledby="home-features-title"
         className="min-[1025px] min-[1025px]:h-171 relative isolate overflow-hidden bg-teal-900 px-6 py-16 sm:px-10 min-[768px]:py-24 min-[1025px]:px-10 min-[1025px]:pt-36 xl:px-32 flex flex-col justify-center"
       >
-        <Image
+        <img
           src="/shapes/shape-03.svg"
           alt=""
           aria-hidden="true"
           width={100}
           height={244}
           className="pointer-events-none absolute right-0 top-0 w-25 max-w-none min-[1025px]:hidden"
+          loading="lazy"
+          decoding="async"
         />
 
-        <Image
+        <img
           src="/shapes/shape-03.svg"
           alt=""
           aria-hidden="true"
           width={100}
           height={244}
           className="pointer-events-none absolute right-0 bottom-0 hidden w-25 max-w-none min-[1025px]:block"
+          loading="lazy"
+          decoding="async"
         />
 
         <div className="flex flex-col min-[768px]:px-10">
@@ -136,13 +144,13 @@ export default function Home() {
             <div className="min-[1025px]:self-start ">
               <h2
                 id="home-features-title"
-                className="mt-8 text-preset-5 min-[768px]:mt-12 min-[768px]:text-left min-[1025px]:text-preset-3 max-[767px]:max-w-58 min-[768px]:max-w-125 min-[1024px]:max-w-none"
+                className="mt-8 text-preset-5 min-[768px]:mt-10 min-[768px]:text-left min-[1025px]:text-preset-3 max-[767px]:max-w-58 min-[768px]:max-w-125 min-[1024px]:max-w-none"
               >
                 Build &amp; manage distributed teams like no one else.
               </h2>
             </div>
 
-            <div className="grid gap-12 min-[768px]:gap-8 min-[768px]:pb-10 min-[1025px]:self-center min-[1025px]:content-center min-[1025px]:gap-6 min-[1025px]:py-10 min-[1025px]:pt-12">
+            <div className="grid gap-12 min-[768px]:gap-8 min-[768px]:pb-10 min-[1025px]:self-center min-[1025px]:content-center min-[1025px]:gap-6 min-[1025px]:py-10 min-[1025px]:pt-9">
               {featureHighlights.map((feature) => (
                 <article
                   key={feature.title}
@@ -154,13 +162,15 @@ export default function Home() {
                       className="absolute left-4 top-4 h-14 w-14 rounded-full bg-teal-700"
                     />
 
-                    <Image
+                    <img
                       src={feature.icon}
                       alt=""
                       aria-hidden="true"
                       width={56}
                       height={56}
                       className="absolute left-0 top-0 z-10 h-14 w-14 shrink-0"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
 
@@ -184,25 +194,29 @@ export default function Home() {
         aria-labelledby="home-testimonials-title"
         className="relative isolate overflow-hidden bg-teal-850 px-6 py-35 sm:px-10 min-[768px]:h-[1199px] min-[768px]:py-25 min-[1025px]:h-[745px] min-[1025px]:px-10 min-[1025px]:py-35 xl:px-32"
       >
-        <Image
+        <img
           src="/shapes/shape-04.svg"
           alt=""
           aria-hidden="true"
           width={147}
           height={100}
           className="pointer-events-none absolute left-0 top-0 w-36.75 max-w-none"
+          loading="lazy"
+          decoding="async"
         />
 
-        <Image
+        <img
           src="/shapes/shape-05.svg"
           alt=""
           aria-hidden="true"
           width={200}
           height={100}
           className="pointer-events-none absolute bottom-0 right-0 w-50 max-w-none"
+          loading="lazy"
+          decoding="async"
         />
 
-        <div className="relative z-10 mx-auto flex max-w-279 flex-col items-center gap-12 min-[768px]:gap-16">
+        <div className="relative z-10 mx-auto flex max-w-279 flex-col items-center gap-12 min-[768px]:gap-12">
           <h2
             id="home-testimonials-title"
             className="max-w-none min-[768px]:max-w-44 text-center text-preset-5 text-neutral-0 min-[768px]:max-w-120 min-[768px]:text-preset-5 min-[1025px]:text-preset-3 min-[1025px]:max-w-237.5"
@@ -217,13 +231,15 @@ export default function Home() {
                 key={testimonial.name}
                 className="flex flex-col items-center text-center"
               >
-                <Image
+                <img
                   src="/quotation-mark.svg"
                   alt=""
                   aria-hidden="true"
                   width={67}
                   height={56}
                   className="pointer-events-none -mb-5 h-14 w-16.75"
+                  loading="lazy"
+                  decoding="async"
                 />
 
                 <div className="relative z-10 flex flex-col items-center gap-4">
@@ -241,12 +257,14 @@ export default function Home() {
                     </p>
                   </div>
 
-                  <Image
+                  <img
                     src={testimonial.image}
                     alt={testimonial.name}
                     width={96}
                     height={96}
                     className="mt-4 h-15 w-15 rounded-full object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
               </article>
