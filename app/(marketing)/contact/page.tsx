@@ -46,7 +46,7 @@ export default function ContactPage() {
 
         <div className="relative z-10 mx-auto w-full px-6 sm:px-10 min-[768px]:max-[1024px]:h-full min-[768px]:max-[1024px]:max-w-143 min-[1025px]:px-20 xl:max-w-277.5 xl:px-0">
           <div className="grid w-full gap-14 md:gap-16 min-[768px]:max-[1024px]:content-start min-[768px]:max-[1024px]:justify-items-center min-[768px]:max-[1024px]:gap-16 min-[1025px]:grid-cols-[minmax(0,28rem)_minmax(0,33.75rem)] min-[1025px]:items-start min-[1025px]:justify-between min-[1025px]:gap-12 xl:grid-cols-[minmax(0,30rem)_minmax(0,33.75rem)] xl:gap-18">
-            <div className="flex flex-col items-center pt-14 text-center min-[768px]:max-[1025px]:mx-auto min-[768px]:max-[1025px]:w-full min-[768px]:max-[1025px]:max-w-120 min-[1025px]:items-start min-[1025px]:text-left min-[1025px]:pt-8">
+            <div className="flex flex-col items-center pt-8 text-center min-[768px]:max-[1025px]:mx-auto min-[768px]:max-[1025px]:w-full min-[768px]:max-[1025px]:max-w-120 min-[1025px]:items-start min-[1025px]:text-left min-[1025px]:pt-8">
               <h1
                 id="contact-page-title"
                 className="text-preset-4 sm:text-[4rem] sm:leading-none min-[1025px]:text-preset-2"

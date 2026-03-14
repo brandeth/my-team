@@ -2,15 +2,25 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Button from "./Button";
 
 type NavbarProps = {
   className?: string;
 };
 
+type MobileMenuState = "closed" | "opening" | "open" | "closing";
+
+const MOBILE_MENU_TRANSITION_MS = 300;
+
 export default function Navbar({ className }: NavbarProps) {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [mobileMenuState, setMobileMenuState] =
+    useState<MobileMenuState>("closed");
+  const pathname = usePathname();
+  const previousPathname = useRef(pathname);
+  const openFrameRef = useRef<number | null>(null);
+  const closeTimerRef = useRef<number | null>(null);
   const navLinks = [
     { href: "/", label: "home" },
     { href: "/about", label: "about" },
@@ -19,15 +29,132 @@ export default function Navbar({ className }: NavbarProps) {
   const classes = ["text-neutral-0 lg:pt-8 xl:pt-5", className]
     .filter(Boolean)
     .join(" ");
+  const isMobileMenuMounted = mobileMenuState !== "closed";
+  const isMobileMenuExpanded =
+    mobileMenuState === "opening" || mobileMenuState === "open";
+  const isMobileMenuVisible = mobileMenuState === "open";
+
+  const clearMenuTimers = useCallback(() => {
+    if (openFrameRef.current !== null) {
+      window.cancelAnimationFrame(openFrameRef.current);
+      openFrameRef.current = null;
+    }
+
+    if (closeTimerRef.current !== null) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  }, []);
+
+  const openMobileMenu = useCallback(() => {
+    if (mobileMenuState === "open" || mobileMenuState === "opening") {
+      return;
+    }
+
+    clearMenuTimers();
+
+    setMobileMenuState("opening");
+
+    openFrameRef.current = window.requestAnimationFrame(() => {
+      setMobileMenuState("open");
+      openFrameRef.current = null;
+    });
+  }, [clearMenuTimers, mobileMenuState]);
+
+  const closeMobileMenu = useCallback(() => {
+    if (mobileMenuState === "closed" || mobileMenuState === "closing") {
+      return;
+    }
+
+    clearMenuTimers();
+
+    setMobileMenuState("closing");
+
+    closeTimerRef.current = window.setTimeout(() => {
+      setMobileMenuState("closed");
+      closeTimerRef.current = null;
+    }, MOBILE_MENU_TRANSITION_MS);
+  }, [clearMenuTimers, mobileMenuState]);
+
+  useEffect(() => {
+    if (previousPathname.current === pathname) {
+      return;
+    }
+
+    previousPathname.current = pathname;
+
+    if (!isMobileMenuMounted) {
+      return;
+    }
+
+    const closeMenuFrame = window.requestAnimationFrame(() => {
+      closeMobileMenu();
+    });
+
+    return () => {
+      window.cancelAnimationFrame(closeMenuFrame);
+    };
+  }, [closeMobileMenu, isMobileMenuMounted, pathname]);
+
+  useEffect(() => {
+    const desktopMediaQuery = window.matchMedia("(min-width: 768px)");
+
+    const handleDesktopChange = (event: MediaQueryListEvent) => {
+      if (event.matches) {
+        closeMobileMenu();
+      }
+    };
+
+    desktopMediaQuery.addEventListener("change", handleDesktopChange);
+
+    return () => {
+      desktopMediaQuery.removeEventListener("change", handleDesktopChange);
+    };
+  }, [closeMobileMenu]);
+
+  useEffect(() => {
+    if (!isMobileMenuMounted) {
+      return;
+    }
+
+    const previousOverflow = document.body.style.overflow;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        closeMobileMenu();
+      }
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [closeMobileMenu, isMobileMenuMounted]);
+
+  useEffect(() => {
+    return clearMenuTimers;
+  }, [clearMenuTimers]);
+
+  function toggleMobileMenu() {
+    if (isMobileMenuExpanded) {
+      closeMobileMenu();
+      return;
+    }
+
+    openMobileMenu();
+  }
 
   return (
     <header className={classes}>
       <div className="relative mx-auto w-full px-6 py-5 sm:px-10 sm:py-6 md:grid md:min-h-28 md:grid-cols-[auto_minmax(0,1fr)_auto] md:items-center md:gap-x-6 md:gap-y-0 md:px-10 md:py-8 lg:min-h-38.5 lg:gap-18 lg:px-20 lg:py-0 xl:max-w-277.5 xl:grid-cols-[auto_1fr_auto] xl:gap-20 xl:px-0">
-        <div className="flex min-h-14 items-center justify-between md:contents">
+        <div className="relative z-50 flex min-h-14 items-center justify-between md:contents">
           <Link
             href="/"
             aria-label="myteam home"
             className="inline-flex shrink-0 items-center justify-self-start transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-0"
+            onClick={closeMobileMenu}
           >
             <Image
               src="/my-team-logo.svg"
@@ -41,15 +168,15 @@ export default function Navbar({ className }: NavbarProps) {
 
           <button
             type="button"
-            aria-expanded={isMobileMenuOpen}
+            aria-expanded={isMobileMenuExpanded}
             aria-controls="mobile-primary-navigation"
             aria-label={
-              isMobileMenuOpen
+              isMobileMenuExpanded
                 ? "Close navigation menu"
                 : "Open navigation menu"
             }
             className="inline-flex h-11 w-11 items-center justify-center text-neutral-0 transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-0 sm:h-12 sm:w-12 md:hidden"
-            onClick={() => setIsMobileMenuOpen((open) => !open)}
+            onClick={toggleMobileMenu}
           >
             <svg
               aria-hidden="true"
@@ -58,7 +185,7 @@ export default function Navbar({ className }: NavbarProps) {
               xmlns="http://www.w3.org/2000/svg"
               className="h-4.5 w-5.5 sm:h-5 sm:w-6"
             >
-              {isMobileMenuOpen ? (
+              {isMobileMenuExpanded ? (
                 <path
                   d="M2 2L18 15M18 2L2 15"
                   stroke="currentColor"
@@ -104,37 +231,100 @@ export default function Navbar({ className }: NavbarProps) {
           </div>
         </div>
 
-        {isMobileMenuOpen ? (
-          <nav
-            id="mobile-primary-navigation"
-            aria-label="Mobile primary"
-            className="absolute left-0 right-0 top-full z-30 mt-5 rounded-2xl bg-neutral-0 px-6 py-6 text-teal-900 shadow-[0_24px_48px_rgba(1,47,52,0.28)] md:hidden"
+        {isMobileMenuMounted ? (
+          <div
+            className={[
+              "fixed inset-0 z-60 md:hidden",
+              mobileMenuState === "closing"
+                ? "pointer-events-none"
+                : "pointer-events-auto",
+            ]
+              .filter(Boolean)
+              .join(" ")}
           >
-            <ul className="flex flex-col items-start gap-4">
-              {navLinks.map((link) => (
-                <li key={link.label} className="w-full">
-                  <Link
-                    href={link.href}
-                    className="text-preset-6-semibold inline-flex lowercase text-teal-900 transition-colors duration-200 hover:text-rose-500 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal-900"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <div
+              aria-hidden="true"
+              className={[
+                "absolute inset-0 bg-teal-950/72 backdrop-blur-[2px] transition-opacity duration-300 ease-out",
+                isMobileMenuVisible ? "opacity-100" : "opacity-0",
+              ]
+                .filter(Boolean)
+                .join(" ")}
+              onClick={closeMobileMenu}
+            />
 
-            <div className="mt-6 border-t border-teal-900/12 pt-6">
-              <Button
-                href={contactHref}
-                variant="secondary"
-                className="w-full lowercase"
-                onClick={() => setIsMobileMenuOpen(false)}
+            <div className="absolute inset-y-0 right-0 flex w-full justify-end pl-6 sm:pl-10">
+              <nav
+                id="mobile-primary-navigation"
+                aria-label="Mobile primary"
+                aria-hidden={isMobileMenuVisible ? undefined : true}
+                className={[
+                  "relative flex h-full w-full max-w-63.75 flex-col overflow-hidden bg-teal-700 px-6 pb-8 pt-28 text-neutral-0 shadow-[-24px_0_48px_rgba(1,47,52,0.28)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] will-change-transform",
+                  isMobileMenuVisible ? "translate-x-0" : "translate-x-full",
+                ]
+                  .filter(Boolean)
+                  .join(" ")}
               >
-                <span>contact us</span>
-              </Button>
+                <button
+                  type="button"
+                  aria-label="Close navigation menu"
+                  className="absolute right-6 top-10 z-20 inline-flex h-11 w-11 items-center justify-center text-neutral-0 transition-opacity duration-200 hover:opacity-80 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-0 sm:h-12 sm:w-12"
+                  onClick={closeMobileMenu}
+                >
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 20 17"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-4.5 w-5.5 sm:h-5 sm:w-6"
+                  >
+                    <path
+                      d="M2 2L18 15M18 2L2 15"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="square"
+                    />
+                  </svg>
+                </button>
+
+                <Image
+                  src="/shapes/shape-13.svg"
+                  alt=""
+                  aria-hidden="true"
+                  width={100}
+                  height={200}
+                  className="pointer-events-none absolute bottom-0 right-0 z-0 h-auto w-20 select-none"
+                />
+
+                <div className="relative z-10 flex h-full flex-col">
+                  <ul className="flex flex-col items-start gap-6">
+                    {navLinks.map((link) => (
+                      <li key={link.label} className="w-full">
+                        <Link
+                          href={link.href}
+                          className="text-preset-6-semibold inline-flex lowercase text-neutral-0 transition-colors duration-200 hover:text-teal-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-neutral-0"
+                          onClick={closeMobileMenu}
+                        >
+                          {link.label}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-8 border-t border-neutral-0/20 pt-6">
+                    <Button
+                      href={contactHref}
+                      variant="secondaryOnDark"
+                      className="w-full lowercase"
+                      onClick={closeMobileMenu}
+                    >
+                      <span>contact us</span>
+                    </Button>
+                  </div>
+                </div>
+              </nav>
             </div>
-          </nav>
+          </div>
         ) : null}
       </div>
     </header>
